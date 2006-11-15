@@ -1,0 +1,13 @@
+##############################################################################
+#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/Changes $
+#     $Date: 2006-11-15 12:02:15 -0600 (Wed, 15 Nov 2006) $
+#   $Author: chrisdolan $
+# $Revision: 867 $
+##############################################################################
+
+[0.1]  Release on 2006-??-??
+
+     Create this new distribution by moving stuff from the core Perl::Critic
+
+     New Policies:
+     * Editor::RequireEmacsFileVariables

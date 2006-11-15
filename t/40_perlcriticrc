@@ -1,0 +1,19 @@
+##################################################################
+#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/t/40_perlcriticrc $
+#     $Date: 2006-11-15 12:02:15 -0600 (Wed, 15 Nov 2006) $
+#   $Author: chrisdolan $
+# $Revision: 867 $
+##################################################################
+
+[CodeLayout::RequireTidyCode]
+perltidyrc = t/perltidyrc
+
+[Documentation::RequirePodSections]
+lib_sections    = NAME|DESCRIPTION|AUTHOR|COPYRIGHT
+script_sections = NAME|DESCRIPTION|AUTHOR|COPYRIGHT
+
+[Miscellanea::RequireRcsKeywords]
+keywords = URL Date Author Revision
+
+[CodeLayout::ProhibitHardTabs]
+allow_leading_tabs = 0

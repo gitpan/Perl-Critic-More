@@ -1,0 +1,138 @@
+# best viewed via "perldoc TODO.pod"
+
+=pod
+
+=for stopwords LHS RHS REFACTORINGS FH SVN stopwords
+
+=head1 NAME
+
+TODO - Things for Perl::Critic::More developers to do
+
+=head1 SOURCE
+
+    #######################################################################
+    #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/TODO.pod $
+    #     $Date: 2006-11-15 12:18:56 -0600 (Wed, 15 Nov 2006) $
+    #   $Author: chrisdolan $
+    # $Revision: 869 $
+    #######################################################################
+
+=head1 POLICIES WANTED
+
+=over 4
+
+=item * CodeLayout::ProhibitNonASCII
+
+Definitely low severity!  Only looks at code, not comments or POD
+
+=item * CodeLayout::RequireUTF8
+
+All characters must be valid UTF-8.  Note that typical ASCII Perl code
+is a valid UTF8 subset.
+
+=item * Miscellanea::RequireMinimumPerlVersion
+
+Every module should have something like C<use 5.6.0>
+
+=item * Miscellanea::Prohibit5006isms
+
+Keep the code 5.005 compatible. Low severity
+
+=item * Miscellanea::B::Lint
+
+Create a compatibility layer for the L<B::Lint> code analyzer.  Make
+it very clear that this runs code and thus is a security hole.
+
+=item * Editor::RequireEmacsFileVariables
+
+=item * Editor::RequireViModelines
+
+Files must have something like the following in them for Emacs and Vi:
+
+  # Local Variables:
+  #   mode: cperl
+  #   cperl-indent-level: 4
+  #   fill-column: 78
+  # End:
+  # vim: expandtab shiftwidth=4:
+
+=over 4
+
+=item Emacs file variables
+
+Implemented!  Currently just tests for the existence of "-*- ... -*-"
+or "Local Variables: ... End:".  This should eventually take a
+perlcriticrc option to specify the exact set of variables.
+
+=item Vim modelines
+
+In vim, this is called "modelines" and should match the following
+pattern (taken from Vim docs):
+
+  [text]{white}{vi:|vim:|ex:}[white]se[t] {options}:[text]
+  [text]{white}{vi:|vim:|ex:}[white]{options}
+
+Roughly translated to regexp:
+
+  ($options) = m/^ (?:\N*\S)? [ \t]+ (?:vi|vim|ex): [ \t]+ set? [ \t]+ (\N+): \N* $/xms;
+  ($options) = m/^ (?:\N*\S)? [ \t]+ (?:vi|vim|ex): [ \t]+ (\N+) $/xms;
+
+Watch out for escaped colons!!
+
+The vim modeline must be within N lines of the top or bottom of the
+file.  That N is user-settable, but defaults to 5.  To learn more type
+":help modelines" in vim.
+
+=item Kate modelines
+
+I also discovered that Kate supports per-file modelines:
+
+L<http://kate-editor.org/article/katepart_modelines>
+
+=back
+
+=item * Documentation::RequireSynopsis
+
+=item * Documentation::RequireLicense
+
+These are simplified versions of Documentation::RequirePodSections.
+
+=item * Miscellaneous::ProhibitBoilerplate
+
+Complain about copy-and-paste code or docs from h2xs, Module::Starter::*,
+etc.
+
+Here's a non-PPI implementation, derived from Modile::Starter itself:
+L<http://search.cpan.org/src/JJORE/Carp-Clan-5.8/t/04boilerplate.t>
+
+=item * ValuesAndExpressions::ProhibitHereDocs
+
+=item * ValuesAndExpressions::ProhibitLongStrings
+
+Low severity.
+
+Both of these attempt to address problems with code layout and appearance.
+Large blocks of inline text can disrupt the readability of code.  Instead, the
+text should be external, in __DATA__, or simply declared in separate functions
+at the end of the module.
+
+Exceptions: if the only code in a sub is a return of a long string, allow it.
+If there is a C<use Inline::> at the top of the module, allow HereDocs.
+
+L<http://rt.cpan.org/Ticket/Display.html?id=20714>
+
+=item * File::RequirePortableName
+
+No spaces, punctuation, etc.
+
+=back
+
+=head1 PPI BUGS
+
+We're waiting on the following bugs to get fixed in a CPAN release of PPI:
+
+=over 4
+
+=back
+
+=cut
