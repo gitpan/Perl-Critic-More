@@ -1,13 +1,13 @@
 ##############################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/lib/Perl/Critic/More.pm $
-#     $Date: 2006-11-15 12:02:15 -0600 (Wed, 15 Nov 2006) $
+#     $Date: 2006-11-15 15:58:24 -0600 (Wed, 15 Nov 2006) $
 #   $Author: chrisdolan $
-# $Revision: 867 $
+# $Revision: 871 $
 ##############################################################################
 package Perl::Critic::More;
 use warnings;
 use strict;
-our $VERSION = 0.1;
+our $VERSION = 0.11;
 1;
 
 __END__

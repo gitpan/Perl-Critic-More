@@ -1,11 +1,14 @@
 ##############################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/Changes $
-#     $Date: 2006-11-15 12:02:15 -0600 (Wed, 15 Nov 2006) $
+#     $Date: 2006-11-15 15:58:24 -0600 (Wed, 15 Nov 2006) $
 #   $Author: chrisdolan $
-# $Revision: 867 $
+# $Revision: 871 $
 ##############################################################################
 
-[0.1]  Release on 2006-??-??
+[0.11]  Release on 2006-11-15
+     Upload to the right PAUSE account this time...
+
+[0.1]   Release on 2006-11-15
 
      Create this new distribution by moving stuff from the core Perl::Critic
 

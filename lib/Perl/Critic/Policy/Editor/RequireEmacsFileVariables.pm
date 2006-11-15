@@ -1,8 +1,8 @@
 #######################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/lib/Perl/Critic/Policy/Editor/RequireEmacsFileVariables.pm $
-#     $Date: 2006-11-15 12:02:15 -0600 (Wed, 15 Nov 2006) $
+#     $Date: 2006-11-15 15:58:24 -0600 (Wed, 15 Nov 2006) $
 #   $Author: chrisdolan $
-# $Revision: 867 $
+# $Revision: 871 $
 ########################################################################
 
 package Perl::Critic::Policy::Editor::RequireEmacsFileVariables;
@@ -12,7 +12,7 @@ use warnings;
 use Perl::Critic::Utils;
 use base 'Perl::Critic::Policy';
 
-our $VERSION = 0.1;
+our $VERSION = 0.11;
 
 #---------------------------------------------------------------------------
 
@@ -89,7 +89,7 @@ __END__
 
 =head1 NAME
 
-Perl::Critic::Policy::Editor::RequireEmacsFileVariables;
+Perl::Critic::Policy::Editor::RequireEmacsFileVariables - Per-file editor settings
 
 =head1 DESCRIPTION
 

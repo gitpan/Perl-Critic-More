@@ -1,6 +1,6 @@
 ---
 name: Perl-Critic-More
-version: 0.1
+version: 0.11
 author:
   - 'Chris Dolan <cdolan@cpan.org>'
 abstract: Supplemental policies for Perl::Critic
@@ -15,10 +15,10 @@ build_requires:
 provides:
   Perl::Critic::More:
     file: lib/Perl/Critic/More.pm
-    version: 0.1
+    version: 0.11
   Perl::Critic::Policy::Editor::RequireEmacsFileVariables:
     file: lib/Perl/Critic/Policy/Editor/RequireEmacsFileVariables.pm
-    version: 0.1
+    version: 0.11
 generated_by: Module::Build version 0.2805
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html
