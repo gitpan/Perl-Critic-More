@@ -2,11 +2,12 @@
 
 ##################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/t/20_policies_editor.t $
-#     $Date: 2006-11-15 12:02:15 -0600 (Wed, 15 Nov 2006) $
-#   $Author: chrisdolan $
-# $Revision: 867 $
+#     $Date: 2006-11-18 17:48:03 -0600 (Sat, 18 Nov 2006) $
+#   $Author: clonezone $
+# $Revision: 878 $
 ##################################################################
 
+use v5.6;
 use strict;
 use warnings;
 use Test::More tests => 13;
@@ -156,6 +157,9 @@ END_PERL
 $policy = 'Editor::RequireEmacsFileVariables';
 is( pcritique($policy, \$code), 1, $policy.' - fake multi-line, before page break');
 
+__END__
+
+
 # Local Variables:
 #   mode: cperl
 #   cperl-indent-level: 4
@@ -163,4 +167,4 @@ is( pcritique($policy, \$code), 1, $policy.' - fake multi-line, before page brea
 #   indent-tabs-mode: nil
 #   c-indentation-style: bsd
 # End:
-# ex: set ts=8 sts=4 sw=4 expandtab
+# ex: set ts=8 sts=4 sw=4 expandtab :

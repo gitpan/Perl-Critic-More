@@ -10,6 +10,9 @@ Module::Build->new(
       'PPI' => 0.199_01,
       'Perl::Critic' => 0.21,
    },
+   recommends => {
+      'Perl::MinimumVersion' => '>0.13',
+   },
    build_requires => {
       'Test::More' => 0,
    },

@@ -1,18 +1,19 @@
 #######################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/lib/Perl/Critic/Policy/Editor/RequireEmacsFileVariables.pm $
-#     $Date: 2006-11-15 15:58:24 -0600 (Wed, 15 Nov 2006) $
+#     $Date: 2006-11-23 22:58:14 -0600 (Thu, 23 Nov 2006) $
 #   $Author: chrisdolan $
-# $Revision: 871 $
+# $Revision: 917 $
 ########################################################################
 
 package Perl::Critic::Policy::Editor::RequireEmacsFileVariables;
 
+use v5.6;
 use strict;
 use warnings;
 use Perl::Critic::Utils;
 use base 'Perl::Critic::Policy';
 
-our $VERSION = 0.11;
+our $VERSION = 0.12;
 
 #---------------------------------------------------------------------------
 
@@ -42,7 +43,7 @@ sub violates {
     my $code = $doc->serialize();
 
     ## Look for first line file vars.  Example:
-    #! /usr/bin/perl -w -*- mode: cperl; cperl-indent-level: 4 -*-
+    # #! /usr/bin/perl -w -*- cperl; cperl-indent-level: 4 -*-
 
     my $one_line_local_var = qr/-[*]- .* -[*]-/xms;
 
@@ -57,7 +58,7 @@ sub violates {
 
     ## Look for end of doc file vars  Example:
     #  Local Variables:
-    #   mode: cperl-mode
+    #   mode: cperl
     #  End:
     my $last_page = substr $code, -3000;
 
@@ -148,6 +149,8 @@ can be found in the LICENSE file included with this module.
 
 =cut
 
+
+
 # Local Variables:
 #   mode: cperl
 #   cperl-indent-level: 4
@@ -155,4 +158,4 @@ can be found in the LICENSE file included with this module.
 #   indent-tabs-mode: nil
 #   c-indentation-style: bsd
 # End:
-# ex: set ts=8 sts=4 sw=4 expandtab
+# ex: set ts=8 sts=4 sw=4 expandtab :

@@ -2,9 +2,9 @@
 
 ##################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/t/97_spelling.t $
-#     $Date: 2006-11-15 12:02:15 -0600 (Wed, 15 Nov 2006) $
+#     $Date: 2006-11-22 01:44:33 -0600 (Wed, 22 Nov 2006) $
 #   $Author: chrisdolan $
-# $Revision: 867 $
+# $Revision: 913 $
 ##################################################################
 
 
@@ -62,6 +62,12 @@ Thalhammer
 TODO
 unblessed
 vice-versa
+modeline
+modelines
+inline
+UTF
+HereDocs
+h2xs
 
 # Local Variables:
 #   mode: cperl
@@ -70,4 +76,4 @@ vice-versa
 #   indent-tabs-mode: nil
 #   c-indentation-style: bsd
 # End:
-# ex: set ts=8 sts=4 sw=4 expandtab
+# ex: set ts=8 sts=4 sw=4 expandtab :

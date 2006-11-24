@@ -12,9 +12,9 @@ TODO - Things for Perl::Critic::More developers to do
 
     #######################################################################
     #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/TODO.pod $
-    #     $Date: 2006-11-15 12:18:56 -0600 (Wed, 15 Nov 2006) $
+    #     $Date: 2006-11-22 01:44:33 -0600 (Wed, 22 Nov 2006) $
     #   $Author: chrisdolan $
-    # $Revision: 869 $
+    # $Revision: 913 $
     #######################################################################
 
 =head1 POLICIES WANTED
@@ -28,15 +28,7 @@ Definitely low severity!  Only looks at code, not comments or POD
 =item * CodeLayout::RequireUTF8
 
 All characters must be valid UTF-8.  Note that typical ASCII Perl code
-is a valid UTF8 subset.
-
-=item * Miscellanea::RequireMinimumPerlVersion
-
-Every module should have something like C<use 5.6.0>
-
-=item * Miscellanea::Prohibit5006isms
-
-Keep the code 5.005 compatible. Low severity
+is a valid UTF-8 subset.
 
 =item * Miscellanea::B::Lint
 

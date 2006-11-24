@@ -1,9 +1,17 @@
 ##############################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/Changes $
-#     $Date: 2006-11-15 15:58:24 -0600 (Wed, 15 Nov 2006) $
+#     $Date: 2006-11-23 22:58:14 -0600 (Thu, 23 Nov 2006) $
 #   $Author: chrisdolan $
-# $Revision: 871 $
+# $Revision: 917 $
 ##############################################################################
+
+[0.12]  Release on 2006-11-23
+
+     New Policies:
+     * CodeLayout::RequireASCII
+     * Modules::RequirePerlVersion
+     * Modules::PerlMinimumVersion
+       (depends on CPAN module Perl::MinimumVersion > 0.13)
 
 [0.11]  Release on 2006-11-15
      Upload to the right PAUSE account this time...
