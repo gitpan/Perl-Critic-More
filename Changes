@@ -1,11 +1,18 @@
 ##############################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/Changes $
-#     $Date: 2006-11-23 22:58:14 -0600 (Thu, 23 Nov 2006) $
-#   $Author: chrisdolan $
-# $Revision: 917 $
+#     $Date: 2007-07-21 00:45:58 -0500 (Sat, 21 Jul 2007) $
+#   $Author: clonezone $
+# $Revision: 1774 $
 ##############################################################################
 
-[0.12]  Release on 2006-11-23
+[x.xx]  Released on 2006-??-??
+
+     New Policies:
+     * ErrorHandling::RequireUseOfExceptions
+     * ValuesAndExpressions::RestrictLongStrings
+     * ValuesAndExpressions::ProhibitMagicNumbers
+
+[0.12]  Released on 2006-11-23
 
      New Policies:
      * CodeLayout::RequireASCII
@@ -13,10 +20,10 @@
      * Modules::PerlMinimumVersion
        (depends on CPAN module Perl::MinimumVersion > 0.13)
 
-[0.11]  Release on 2006-11-15
+[0.11]  Released on 2006-11-15
      Upload to the right PAUSE account this time...
 
-[0.1]   Release on 2006-11-15
+[0.1]   Released on 2006-11-15
 
      Create this new distribution by moving stuff from the core Perl::Critic
 

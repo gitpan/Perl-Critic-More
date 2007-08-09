@@ -2,15 +2,15 @@
 use ExtUtils::MakeMaker;
 WriteMakefile
 (
-          'PL_FILES' => {},
-          'INSTALLDIRS' => 'site',
           'NAME' => 'Perl::Critic::More',
-          'EXE_FILES' => [],
           'VERSION_FROM' => 'lib/Perl/Critic/More.pm',
           'PREREQ_PM' => {
-                           'Test::More' => 0,
-                           'PPI' => '0.19901',
-                           'Perl::Critic' => '0.21'
-                         }
+                           'PPI' => '0.19903',
+                           'Perl::Critic' => '1.061',
+                           'Test::More' => '0'
+                         },
+          'INSTALLDIRS' => 'site',
+          'EXE_FILES' => [],
+          'PL_FILES' => {}
         )
 ;

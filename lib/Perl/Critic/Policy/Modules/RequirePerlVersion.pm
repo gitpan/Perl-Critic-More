@@ -1,8 +1,8 @@
 #######################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/lib/Perl/Critic/Policy/Modules/RequirePerlVersion.pm $
-#     $Date: 2006-11-23 22:58:14 -0600 (Thu, 23 Nov 2006) $
+#     $Date: 2007-08-08 20:17:06 -0500 (Wed, 08 Aug 2007) $
 #   $Author: chrisdolan $
-# $Revision: 917 $
+# $Revision: 1825 $
 ########################################################################
 
 package Perl::Critic::Policy::Modules::RequirePerlVersion;
@@ -10,10 +10,10 @@ package Perl::Critic::Policy::Modules::RequirePerlVersion;
 use v5.6;
 use strict;
 use warnings;
-use Perl::Critic::Utils;
+use Perl::Critic::Utils qw{ :severities };
 use base 'Perl::Critic::Policy';
 
-our $VERSION = 0.12;
+our $VERSION = 0.14;
 
 #---------------------------------------------------------------------------
 
@@ -57,6 +57,11 @@ __END__
 
 Perl::Critic::Policy::Modules::RequirePerlVersion - Expect a C<use 5.6.0;> or similar
 
+=head1 AFFILIATION
+
+This policy is part of L<Perl::Critic::More>, a bleading edge supplement to
+L<Perl::Critic>.
+
 =head1 DESCRIPTION
 
 As Perl evolves, new desirable features get added.  The best ones seem to
@@ -98,4 +103,4 @@ can be found in the LICENSE file included with this module.
 #   indent-tabs-mode: nil
 #   c-indentation-style: bsd
 # End:
-# ex: set ts=8 sts=4 sw=4 expandtab :
+# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab :

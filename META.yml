@@ -1,6 +1,6 @@
 ---
 name: Perl-Critic-More
-version: 0.12
+version: 0.14
 author:
   - 'Chris Dolan <cdolan@cpan.org>'
 abstract: Supplemental policies for Perl::Critic
@@ -8,29 +8,38 @@ license: perl
 resources:
   license: http://dev.perl.org/licenses/
 requires:
-  PPI: 0.19901
-  Perl::Critic: 0.21
+  PPI: 0.19903
+  Perl::Critic: 1.061
 build_requires:
   Test::More: 0
 recommends:
-  Perl::MinimumVersion: '>0.13'
+  Perl::MinimumVersion: 0.14
 provides:
   Perl::Critic::More:
     file: lib/Perl/Critic/More.pm
-    version: 0.12
+    version: 0.14
   Perl::Critic::Policy::CodeLayout::RequireASCII:
     file: lib/Perl/Critic/Policy/CodeLayout/RequireASCII.pm
-    version: 0.12
+    version: 0.14
   Perl::Critic::Policy::Editor::RequireEmacsFileVariables:
     file: lib/Perl/Critic/Policy/Editor/RequireEmacsFileVariables.pm
-    version: 0.12
+    version: 0.14
+  Perl::Critic::Policy::ErrorHandling::RequireUseOfExceptions:
+    file: lib/Perl/Critic/Policy/ErrorHandling/RequireUseOfExceptions.pm
+    version: 0.14
   Perl::Critic::Policy::Modules::PerlMinimumVersion:
     file: lib/Perl/Critic/Policy/Modules/PerlMinimumVersion.pm
-    version: 0.12
+    version: 0.14
   Perl::Critic::Policy::Modules::RequirePerlVersion:
     file: lib/Perl/Critic/Policy/Modules/RequirePerlVersion.pm
-    version: 0.12
-generated_by: Module::Build version 0.2805
+    version: 0.14
+  Perl::Critic::Policy::ValuesAndExpressions::ProhibitMagicNumbers:
+    file: lib/Perl/Critic/Policy/ValuesAndExpressions/ProhibitMagicNumbers.pm
+    version: 0.14
+  Perl::Critic::Policy::ValuesAndExpressions::RestrictLongStrings:
+    file: lib/Perl/Critic/Policy/ValuesAndExpressions/RestrictLongStrings.pm
+    version: 0.14
+generated_by: Module::Build version 0.2808
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html
   version: 1.2

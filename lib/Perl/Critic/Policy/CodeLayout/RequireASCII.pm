@@ -1,8 +1,8 @@
 #######################################################################
-#      $URL$
-#     $Date$
-#   $Author$
-# $Revision$
+#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/lib/Perl/Critic/Policy/CodeLayout/RequireASCII.pm $
+#     $Date: 2007-08-08 20:17:06 -0500 (Wed, 08 Aug 2007) $
+#   $Author: chrisdolan $
+# $Revision: 1825 $
 ########################################################################
 
 package Perl::Critic::Policy::CodeLayout::RequireASCII;
@@ -10,11 +10,14 @@ package Perl::Critic::Policy::CodeLayout::RequireASCII;
 use v5.6;
 use strict;
 use warnings;
-use Perl::Critic::Utils;
+use Readonly;
+use Perl::Critic::Utils qw{ :severities };
 use List::MoreUtils qw(none any);
 use base 'Perl::Critic::Policy';
 
-our $VERSION = 0.12;
+our $VERSION = 0.14;
+
+Readonly my $MAX_ASCII_VALUE => 127;
 
 #---------------------------------------------------------------------------
 
@@ -32,12 +35,12 @@ sub applies_to       { return 'PPI::Token' }
 sub violates {
     my ( $self, $elem, $doc ) = @_;
 
-    if ( any { $_ > 127 } unpack 'C*', "$elem" ) {
+    if ( any { $_ > $MAX_ASCII_VALUE } unpack 'C*', "$elem" ) {
         return $self->violation( $desc, $expl, $elem );
     }
     if ( $elem->isa('PPI::Token::HereDoc') ) {
         for my $line ( $elem->heredoc ) {
-            if ( any { $_ > 127 } unpack 'C*', $line ) {
+            if ( any { $_ > $MAX_ASCII_VALUE } unpack 'C*', $line ) {
                 return $self->violation( $desc, $expl, $elem );
             }
         }
@@ -59,6 +62,11 @@ __END__
 =head1 NAME
 
 Perl::Critic::Policy::CodeLayout::RequireASCII - Disallow high-bit characters
+
+=head1 AFFILIATION
+
+This policy is part of L<Perl::Critic::More>, a bleading edge supplement to
+L<Perl::Critic>.
 
 =head1 DESCRIPTION
 
@@ -101,4 +109,4 @@ can be found in the LICENSE file included with this module.
 #   indent-tabs-mode: nil
 #   c-indentation-style: bsd
 # End:
-# ex: set ts=8 sts=4 sw=4 expandtab :
+# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab :

@@ -1,15 +1,19 @@
 ##################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/t/40_perlcriticrc $
-#     $Date: 2006-11-22 01:44:33 -0600 (Wed, 22 Nov 2006) $
+#     $Date: 2007-08-07 22:02:29 -0500 (Tue, 07 Aug 2007) $
 #   $Author: chrisdolan $
-# $Revision: 913 $
+# $Revision: 1822 $
 ##################################################################
+
+severity = 1
+
+#-----------------------------------------------------------------------------
 
 [CodeLayout::RequireTidyCode]
 perltidyrc = t/perltidyrc
 
 [Documentation::RequirePodSections]
-lib_sections    = NAME|DESCRIPTION|AUTHOR|COPYRIGHT
+lib_sections    = NAME|AFFILIATION|DESCRIPTION|AUTHOR|COPYRIGHT
 script_sections = NAME|DESCRIPTION|AUTHOR|COPYRIGHT
 
 [Miscellanea::RequireRcsKeywords]
@@ -20,3 +24,14 @@ allow_leading_tabs = 0
 
 [Modules::PerlMinimumVersion]
 version = 5.6.0
+
+[-ErrorHandling::RequireCarping]
+
+[Documentation::PodSpelling]
+stop_words = autoflushes BBEdit CGI CPAN CVS Dolan exponentials filename Guzis HEREDOC HEREDOCS HEREDOCs IDE Maxia Mehner Metadata metadata multi-line namespace namespaces PBP perlcritic perlcriticrc PolicyListing postfix programmatically PPI Readonly refactor refactoring runtime sigil sigils SQL STDERR STDIN STDOUT subdirectories TerMarsch Thalhammer TODO UI unblessed vice-versa
+
+[ValuesAndExpressions::ProhibitMagicNumbers]
+allowed_values = -1 0 1 2
+
+# Isn't it odd that we ignore our own policy?
+[-ErrorHandling::RequireUseOfExceptions]

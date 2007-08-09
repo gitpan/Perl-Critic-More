@@ -1,8 +1,8 @@
 #######################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/lib/Perl/Critic/Policy/Modules/PerlMinimumVersion.pm $
-#     $Date: 2006-11-23 22:58:14 -0600 (Thu, 23 Nov 2006) $
+#     $Date: 2007-08-08 20:17:06 -0500 (Wed, 08 Aug 2007) $
 #   $Author: chrisdolan $
-# $Revision: 917 $
+# $Revision: 1825 $
 ########################################################################
 
 package Perl::Critic::Policy::Modules::PerlMinimumVersion;
@@ -10,12 +10,12 @@ package Perl::Critic::Policy::Modules::PerlMinimumVersion;
 use v5.6;
 use strict;
 use warnings;
-use Perl::Critic::Utils;
+use Perl::Critic::Utils qw{ :severities };
 use English qw(-no_match_vars);
 use Carp;
 use base 'Perl::Critic::Policy';
 
-our $VERSION = 0.12;
+our $VERSION = 0.14;
 
 #---------------------------------------------------------------------------
 
@@ -57,6 +57,8 @@ sub violates {
     my $checker = Perl::MinimumVersion->new($doc);
 
     # Workaround for Perl::Critic::Document instance in older P::C versions
+    # (pre-v0.22) that didn't have a custom isa() to masquerade as a
+    # PPI::Document
     if ( !$checker ) {
         $checker = Perl::MinimumVersion->new( $doc->{_doc} );
     }
@@ -82,6 +84,11 @@ __END__
 =head1 NAME
 
 Perl::Critic::Policy::Modules::PerlMinimumVersion - Enforce backward compatible code
+
+=head1 AFFILIATION
+
+This policy is part of L<Perl::Critic::More>, a bleading edge supplement to
+L<Perl::Critic>.
 
 =head1 DESCRIPTION
 
@@ -122,4 +129,4 @@ can be found in the LICENSE file included with this module.
 #   indent-tabs-mode: nil
 #   c-indentation-style: bsd
 # End:
-# ex: set ts=8 sts=4 sw=4 expandtab :
+# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab :

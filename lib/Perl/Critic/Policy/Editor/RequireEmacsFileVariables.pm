@@ -1,8 +1,8 @@
 #######################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/lib/Perl/Critic/Policy/Editor/RequireEmacsFileVariables.pm $
-#     $Date: 2006-11-23 22:58:14 -0600 (Thu, 23 Nov 2006) $
+#     $Date: 2007-08-08 20:17:06 -0500 (Wed, 08 Aug 2007) $
 #   $Author: chrisdolan $
-# $Revision: 917 $
+# $Revision: 1825 $
 ########################################################################
 
 package Perl::Critic::Policy::Editor::RequireEmacsFileVariables;
@@ -10,10 +10,14 @@ package Perl::Critic::Policy::Editor::RequireEmacsFileVariables;
 use v5.6;
 use strict;
 use warnings;
-use Perl::Critic::Utils;
+use Readonly;
+use Perl::Critic::Utils qw{ :severities };
 use base 'Perl::Critic::Policy';
 
-our $VERSION = 0.12;
+our $VERSION = 0.14;
+
+# This constant is hard-coded in emacs file.el
+Readonly my $LOOK_BYTES_FROM_END => 3000;
 
 #---------------------------------------------------------------------------
 
@@ -60,7 +64,7 @@ sub violates {
     #  Local Variables:
     #   mode: cperl
     #  End:
-    my $last_page = substr $code, -3000;
+    my $last_page = substr $code, -$LOOK_BYTES_FROM_END;
 
     # Remove anything not on the last page, as delimited by "^L", aka
     # "\f", aka formfeed.
@@ -91,6 +95,11 @@ __END__
 =head1 NAME
 
 Perl::Critic::Policy::Editor::RequireEmacsFileVariables - Per-file editor settings
+
+=head1 AFFILIATION
+
+This policy is part of L<Perl::Critic::More>, a bleading edge supplement to
+L<Perl::Critic>.
 
 =head1 DESCRIPTION
 
@@ -158,4 +167,4 @@ can be found in the LICENSE file included with this module.
 #   indent-tabs-mode: nil
 #   c-indentation-style: bsd
 # End:
-# ex: set ts=8 sts=4 sw=4 expandtab :
+# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab :

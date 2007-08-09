@@ -7,11 +7,11 @@ Module::Build->new(
    dist_author => 'Chris Dolan <cdolan@cpan.org>',
    license => 'perl',
    requires => {
-      'PPI' => 0.199_01,
-      'Perl::Critic' => 0.21,
+      'PPI' => 0.199_03,
+      'Perl::Critic' => 1.061,
    },
    recommends => {
-      'Perl::MinimumVersion' => '>0.13',
+      'Perl::MinimumVersion' => '0.14',
    },
    build_requires => {
       'Test::More' => 0,

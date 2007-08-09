@@ -12,18 +12,25 @@ TODO - Things for Perl::Critic::More developers to do
 
     #######################################################################
     #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/TODO.pod $
-    #     $Date: 2006-11-22 01:44:33 -0600 (Wed, 22 Nov 2006) $
-    #   $Author: chrisdolan $
-    # $Revision: 913 $
+    #     $Date: 2007-06-06 02:56:54 -0500 (Wed, 06 Jun 2007) $
+    #   $Author: thaljef $
+    # $Revision: 1609 $
     #######################################################################
+
+=head1 FIXES AND FEATURES NEEDED
+
+=over 4
+
+=item Emacs file variables
+
+This should eventually take a perlcriticrc option to specify the exact
+set of variables.
+
+=back
 
 =head1 POLICIES WANTED
 
 =over 4
-
-=item * CodeLayout::ProhibitNonASCII
-
-Definitely low severity!  Only looks at code, not comments or POD
 
 =item * CodeLayout::RequireUTF8
 
@@ -35,28 +42,11 @@ is a valid UTF-8 subset.
 Create a compatibility layer for the L<B::Lint> code analyzer.  Make
 it very clear that this runs code and thus is a security hole.
 
-=item * Editor::RequireEmacsFileVariables
-
 =item * Editor::RequireViModelines
 
 Files must have something like the following in them for Emacs and Vi:
 
-  # Local Variables:
-  #   mode: cperl
-  #   cperl-indent-level: 4
-  #   fill-column: 78
-  # End:
   # vim: expandtab shiftwidth=4:
-
-=over 4
-
-=item Emacs file variables
-
-Implemented!  Currently just tests for the existence of "-*- ... -*-"
-or "Local Variables: ... End:".  This should eventually take a
-perlcriticrc option to specify the exact set of variables.
-
-=item Vim modelines
 
 In vim, this is called "modelines" and should match the following
 pattern (taken from Vim docs):
@@ -75,11 +65,29 @@ The vim modeline must be within N lines of the top or bottom of the
 file.  That N is user-settable, but defaults to 5.  To learn more type
 ":help modelines" in vim.
 
+=over 4
+
+=item jEdit buffer-local properties
+
+Colon-delimited, equals-sign-separated name-value pairs within the
+first or last 10 lines of a file.  For example, this:
+
+  :indentSize=4:noTabs=true:maxLineLen=78:mode=perl:
+
+will result in settings similar to the current values being specified
+for Emacs and vi.
+
+L<http://jedit.org/users-guide/buffer-local.html>
+
 =item Kate modelines
 
 I also discovered that Kate supports per-file modelines:
 
 L<http://kate-editor.org/article/katepart_modelines>
+
+=item Others
+
+Eclipse
 
 =back
 
@@ -94,12 +102,12 @@ These are simplified versions of Documentation::RequirePodSections.
 Complain about copy-and-paste code or docs from h2xs, Module::Starter::*,
 etc.
 
-Here's a non-PPI implementation, derived from Modile::Starter itself:
+Here's a non-PPI implementation, derived from Module::Starter itself:
 L<http://search.cpan.org/src/JJORE/Carp-Clan-5.8/t/04boilerplate.t>
 
-=item * ValuesAndExpressions::ProhibitHereDocs
+=item * ValuesAndExpressions::RestrictHereDocs
 
-=item * ValuesAndExpressions::ProhibitLongStrings
+=item * ValuesAndExpressions::RestrictLongStrings
 
 Low severity.
 
@@ -115,7 +123,22 @@ L<http://rt.cpan.org/Ticket/Display.html?id=20714>
 
 =item * File::RequirePortableName
 
-No spaces, punctuation, etc.
+No spaces, punctuation, etc.  See L<Test::Portability::Files>.
+
+=item * ValuesAndExpressions::ProhibitMagicNumbers
+
+The C<allowed_values> option needs to handle ranges.
+
+Needs to be tested against a wider range of $VERSION declarations.
+
+=item * Modules::ProhibitSuperfluousIncludes
+
+Warn about modules that are loaded, but don't seem to be used.  You
+would have to compare sub calls, imports, and package symbols used in
+the current file with those declared in the included files.  This is
+likely to generate false positives.  Would have to provide a way to
+configure exempt modules and symbols.
+
 
 =back
 
@@ -124,6 +147,14 @@ No spaces, punctuation, etc.
 We're waiting on the following bugs to get fixed in a CPAN release of PPI:
 
 =over 4
+
+=item Hash constructors being parsed as blocks
+
+ValuesAndExpressions::ProhibitMagicNumbers has a performance optimization that
+can't be done because it can't tell whether a block is really a block or not.
+
+When fixed, uncomment the lines in
+_element_is_in_an_include_or_readonly_statement().
 
 =back
 

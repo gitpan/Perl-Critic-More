@@ -2,15 +2,16 @@
 
 ##################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/t/20_policies_modules.t $
-#     $Date: 2006-11-22 01:44:33 -0600 (Wed, 22 Nov 2006) $
+#     $Date: 2007-08-07 22:02:29 -0500 (Tue, 07 Aug 2007) $
 #   $Author: chrisdolan $
-# $Revision: 913 $
+# $Revision: 1822 $
 ##################################################################
 
 use v5.6;
 use strict;
 use warnings;
-use Test::More tests => 11;
+use English qw(-no_match_vars);
+use Test::More tests => 12;
 
 # common P::C testing tools
 use Perl::Critic::TestUtils qw(pcritique);
@@ -19,6 +20,10 @@ Perl::Critic::TestUtils::block_perlcriticrc();
 my $code ;
 my $policy;
 my %config;
+
+# without Perl::MinimumVersion, some policies always pass.
+eval { require Perl::MinimumVersion; };
+my $has_minimum_version = $EVAL_ERROR ? 0 : 1;
 
 #----------------------------------------------------------------
 
@@ -100,11 +105,15 @@ END_PERL
 
 $policy = 'Modules::PerlMinimumVersion';
 %config = ( version => '5.005' );
-is( pcritique($policy, \$code, \%config), 1, $policy.' - 5.005');
+is( pcritique($policy, \$code, \%config), $has_minimum_version, $policy.' - 5.005');
 %config = ( version => '5.006' );
 is( pcritique($policy, \$code, \%config), 0, $policy.' - 5.006');
 %config = ( version => '5.008' );
 is( pcritique($policy, \$code, \%config), 0, $policy.' - 5.008');
+
+%config = ( version => '9.999' );
+eval { pcritique($policy, \$code, \%config); };
+ok($EVAL_ERROR, $policy.' - invalid version');
 
 #----------------------------------------------------------------
 # Local Variables:
@@ -114,4 +123,4 @@ is( pcritique($policy, \$code, \%config), 0, $policy.' - 5.008');
 #   indent-tabs-mode: nil
 #   c-indentation-style: bsd
 # End:
-# ex: set ts=8 sts=4 sw=4 expandtab :
+# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab :
