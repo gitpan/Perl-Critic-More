@@ -15,7 +15,7 @@ use Perl::Critic::Utils qw{ :severities };
 use List::MoreUtils qw(none any);
 use base 'Perl::Critic::Policy';
 
-our $VERSION = 0.14;
+our $VERSION = 0.15;
 
 Readonly my $MAX_ASCII_VALUE => 127;
 

@@ -1,4 +1,4 @@
-#!perl -T
+#!perl
 ##############################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/t/00_compile.t $
 #     $Date: 2007-08-06 16:42:44 -0500 (Mon, 06 Aug 2007) $
@@ -12,6 +12,8 @@ use Perl::Critic::Config;
 use Perl::Critic::Utils qw{ &policy_long_name &hashify };
 use Perl::Critic::TestUtils qw(bundled_policy_names);
 use Test::More tests => 2;
+
+Perl::Critic::TestUtils::block_perlcriticrc();
 
 my @policies = bundled_policy_names();
 

@@ -15,7 +15,7 @@ use English qw(-no_match_vars);
 use Carp;
 use base 'Perl::Critic::Policy';
 
-our $VERSION = 0.14;
+our $VERSION = 0.15;
 
 #---------------------------------------------------------------------------
 

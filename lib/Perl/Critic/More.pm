@@ -9,7 +9,7 @@ package Perl::Critic::More;
 use v5.6;
 use warnings;
 use strict;
-our $VERSION = 0.14;
+our $VERSION = 0.15;
 
 1;
 
