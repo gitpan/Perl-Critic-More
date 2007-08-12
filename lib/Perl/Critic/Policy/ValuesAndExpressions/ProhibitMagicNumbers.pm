@@ -1,14 +1,14 @@
 ## no critic(RequireTidyCode)
 ##############################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/lib/Perl/Critic/Policy/ValuesAndExpressions/ProhibitMagicNumbers.pm $
-#     $Date: 2007-08-08 20:17:06 -0500 (Wed, 08 Aug 2007) $
+#     $Date: 2007-08-12 11:37:37 -0500 (Sun, 12 Aug 2007) $
 #   $Author: chrisdolan $
-# $Revision: 1825 $
+# $Revision: 1831 $
 ##############################################################################
 
 package Perl::Critic::Policy::ValuesAndExpressions::ProhibitMagicNumbers;
 
-use v5.6;
+use 5.006;
 use strict;
 use warnings;
 use Readonly;
@@ -16,7 +16,7 @@ use Readonly;
 use Perl::Critic::Utils qw{ :characters :severities :data_conversion };
 use base 'Perl::Critic::Policy';
 
-our $VERSION = 0.15;
+our $VERSION = 0.16;
 
 #----------------------------------------------------------------------------
 
@@ -214,6 +214,8 @@ sub _determine_checked_types {
 
 sub violates {
     my ( $self, $elem, undef ) = @_;
+
+    return if PPI->VERSION le '1.118';
 
     return if _element_is_in_an_include_readonly_or_version_statement($elem);
 

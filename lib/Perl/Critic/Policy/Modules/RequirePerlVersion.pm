@@ -1,24 +1,24 @@
 #######################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/lib/Perl/Critic/Policy/Modules/RequirePerlVersion.pm $
-#     $Date: 2007-08-08 20:17:06 -0500 (Wed, 08 Aug 2007) $
+#     $Date: 2007-08-12 11:37:37 -0500 (Sun, 12 Aug 2007) $
 #   $Author: chrisdolan $
-# $Revision: 1825 $
+# $Revision: 1831 $
 ########################################################################
 
 package Perl::Critic::Policy::Modules::RequirePerlVersion;
 
-use v5.6;
+use 5.006;
 use strict;
 use warnings;
 use Perl::Critic::Utils qw{ :severities };
 use base 'Perl::Critic::Policy';
 
-our $VERSION = 0.15;
+our $VERSION = 0.16;
 
 #---------------------------------------------------------------------------
 
 my $desc = 'Missing Perl version';
-my $expl = 'Add "use v5.6.0" or similar';
+my $expl = 'Add "use 5.006" or similar';
 
 #---------------------------------------------------------------------------
 
@@ -55,7 +55,7 @@ __END__
 
 =head1 NAME
 
-Perl::Critic::Policy::Modules::RequirePerlVersion - Expect a C<use 5.6.0;> or similar
+Perl::Critic::Policy::Modules::RequirePerlVersion - Expect a C<use 5.006;> or similar
 
 =head1 AFFILIATION
 
@@ -79,7 +79,11 @@ or
 
   use v5.6.0;
 
-Additionally, it's good form to start that minimum version in your
+The former is preferred as the latter can trigger v-string compatibility
+warnings.  (If someone could please explain that to me, I'd really appreciate
+it!)
+
+Additionally, it's good form to state that minimum version in your
 F<Makefile.PL> or F<Build.PL> file.
 
 =head1 AUTHOR
@@ -88,7 +92,7 @@ Chris Dolan <cdolan@cpan.org>
 
 =head1 COPYRIGHT
 
-Copyright (c) 2006 Chris Dolan
+Copyright (c) 2006-2007 Chris Dolan
 
 This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.  The full text of this license

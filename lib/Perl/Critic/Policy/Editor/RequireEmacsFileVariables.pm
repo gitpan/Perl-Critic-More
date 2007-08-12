@@ -1,20 +1,20 @@
 #######################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/lib/Perl/Critic/Policy/Editor/RequireEmacsFileVariables.pm $
-#     $Date: 2007-08-08 20:17:06 -0500 (Wed, 08 Aug 2007) $
+#     $Date: 2007-08-12 11:37:37 -0500 (Sun, 12 Aug 2007) $
 #   $Author: chrisdolan $
-# $Revision: 1825 $
+# $Revision: 1831 $
 ########################################################################
 
 package Perl::Critic::Policy::Editor::RequireEmacsFileVariables;
 
-use v5.6;
+use 5.006;
 use strict;
 use warnings;
 use Readonly;
 use Perl::Critic::Utils qw{ :severities };
 use base 'Perl::Critic::Policy';
 
-our $VERSION = 0.15;
+our $VERSION = 0.16;
 
 # This constant is hard-coded in emacs file.el
 Readonly my $LOOK_BYTES_FROM_END => 3000;
@@ -150,7 +150,7 @@ Michael Wolf <MichaelRWolf@att.net>
 
 =head1 COPYRIGHT
 
-Copyright (c) 2006 Chris Dolan
+Copyright (c) 2006-2007 Chris Dolan
 
 This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.  The full text of this license

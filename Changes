@@ -1,11 +1,22 @@
 ##############################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/Changes $
-#     $Date: 2007-07-21 00:45:58 -0500 (Sat, 21 Jul 2007) $
-#   $Author: clonezone $
-# $Revision: 1774 $
+#     $Date: 2007-08-12 11:37:37 -0500 (Sun, 12 Aug 2007) $
+#   $Author: chrisdolan $
+# $Revision: 1831 $
 ##############################################################################
 
-[x.xx]  Released on 2006-??-??
+[0.16] Released on 2007-08-12
+     Bugfix release
+      * PPI version back down to 1.118, but turn off ProhibitMagicNumbers with older PPI
+      * work around v-string warning
+     [Thanks to users of CPAN::Reporter for identifying bugs!]
+
+[0.15]  Released on 2007-08-10
+     Bugfix release
+      * Readonly dependency omitted
+      * PPI version => 1.199_03
+
+[0.14]  Released on 2007-08-09
 
      New Policies:
      * ErrorHandling::RequireUseOfExceptions

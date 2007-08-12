@@ -5,7 +5,7 @@ WriteMakefile
           'NAME' => 'Perl::Critic::More',
           'VERSION_FROM' => 'lib/Perl/Critic/More.pm',
           'PREREQ_PM' => {
-                           'PPI' => '0.199_03',
+                           'PPI' => '0.118',
                            'Perl::Critic' => '1.061',
                            'Readonly' => '1.03',
                            'Test::More' => '0'

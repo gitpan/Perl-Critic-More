@@ -1,9 +1,9 @@
 #!perl
 ##############################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/t/00_compile.t $
-#     $Date: 2007-08-06 16:42:44 -0500 (Mon, 06 Aug 2007) $
+#     $Date: 2007-08-10 20:38:52 -0500 (Fri, 10 Aug 2007) $
 #   $Author: chrisdolan $
-# $Revision: 1807 $
+# $Revision: 1827 $
 ##############################################################################
 
 use warnings;
