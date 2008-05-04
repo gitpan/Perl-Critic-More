@@ -2,9 +2,9 @@
 
 ##################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/t/20_policies_modules.t $
-#     $Date: 2007-08-07 22:02:29 -0500 (Tue, 07 Aug 2007) $
-#   $Author: chrisdolan $
-# $Revision: 1822 $
+#     $Date: 2008-05-04 14:47:40 -0500 (Sun, 04 May 2008) $
+#   $Author: clonezone $
+# $Revision: 2307 $
 ##################################################################
 
 use v5.6;
@@ -123,4 +123,4 @@ ok($EVAL_ERROR, $policy.' - invalid version');
 #   indent-tabs-mode: nil
 #   c-indentation-style: bsd
 # End:
-# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab :
+# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab shiftround :

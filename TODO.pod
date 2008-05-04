@@ -12,9 +12,9 @@ TODO - Things for Perl::Critic::More developers to do
 
     #######################################################################
     #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/TODO.pod $
-    #     $Date: 2007-06-06 02:56:54 -0500 (Wed, 06 Jun 2007) $
-    #   $Author: thaljef $
-    # $Revision: 1609 $
+    #     $Date: 2008-05-04 14:51:19 -0500 (Sun, 04 May 2008) $
+    #   $Author: clonezone $
+    # $Revision: 2308 $
     #######################################################################
 
 =head1 FIXES AND FEATURES NEEDED
@@ -125,12 +125,6 @@ L<http://rt.cpan.org/Ticket/Display.html?id=20714>
 
 No spaces, punctuation, etc.  See L<Test::Portability::Files>.
 
-=item * ValuesAndExpressions::ProhibitMagicNumbers
-
-The C<allowed_values> option needs to handle ranges.
-
-Needs to be tested against a wider range of $VERSION declarations.
-
 =item * Modules::ProhibitSuperfluousIncludes
 
 Warn about modules that are loaded, but don't seem to be used.  You
@@ -139,6 +133,21 @@ the current file with those declared in the included files.  This is
 likely to generate false positives.  Would have to provide a way to
 configure exempt modules and symbols.
 
+=item * Modules::RequireIncInBeginBlock
+
+L<http://rt.cpan.org/Ticket/Display.html?id=28803>
+
+The implementation would probably be:
+
+ * look for @INC
+   - else return
+ * check if it's the lhs of an assignment
+   - else return
+ * recurse up to see if it's inside a PPI::Statement::Scheduled
+   - if we hit the top of the tree, emit violation
+ * check that statement is a BEGIN
+   - else return
+ * emit violation.
 
 =back
 
@@ -148,14 +157,8 @@ We're waiting on the following bugs to get fixed in a CPAN release of PPI:
 
 =over 4
 
-=item Hash constructors being parsed as blocks
-
-ValuesAndExpressions::ProhibitMagicNumbers has a performance optimization that
-can't be done because it can't tell whether a block is really a block or not.
-
-When fixed, uncomment the lines in
-_element_is_in_an_include_or_readonly_statement().
-
 =back
 
 =cut
+
+# ex: set ts=8 sts=4 sw=4 tw=78 ft=pod expandtab shiftround :

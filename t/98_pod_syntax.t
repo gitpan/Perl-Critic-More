@@ -2,9 +2,9 @@
 
 ##################################################################
 #     $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/t/98_pod_syntax.t $
-#    $Date: 2006-11-26 14:14:43 -0600 (Sun, 26 Nov 2006) $
+#    $Date: 2008-05-04 14:47:40 -0500 (Sun, 04 May 2008) $
 #   $Author: clonezone $
-# $Revision: 960 $
+# $Revision: 2307 $
 ##################################################################
 
 use strict;
@@ -20,4 +20,4 @@ all_pod_files_ok();# Local Variables:
 #   indent-tabs-mode: nil
 #   c-indentation-style: bsd
 # End:
-# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab :
+# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab shiftround :

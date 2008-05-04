@@ -1,12 +1,11 @@
 #!perl -w
-use warnings;
-use strict;
-use File::Find;
-use Test::More;
 
-if (!$ENV{TEST_AUTHOR}) {
-    plan skip_all => 'Author test';
-}
+use strict;
+use warnings;
+
+use File::Find;
+
+use Test::More;
 
 plan 'no_plan';
 
@@ -56,4 +55,4 @@ sub check_version {
 #   indent-tabs-mode: nil
 #   c-indentation-style: bsd
 # End:
-# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab :
+# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab shiftround :

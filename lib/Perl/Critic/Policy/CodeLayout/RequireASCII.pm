@@ -1,8 +1,8 @@
 #######################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/lib/Perl/Critic/Policy/CodeLayout/RequireASCII.pm $
-#     $Date: 2007-08-12 11:37:37 -0500 (Sun, 12 Aug 2007) $
-#   $Author: chrisdolan $
-# $Revision: 1831 $
+#     $Date: 2008-05-04 15:05:26 -0500 (Sun, 04 May 2008) $
+#   $Author: clonezone $
+# $Revision: 2311 $
 ########################################################################
 
 package Perl::Critic::Policy::CodeLayout::RequireASCII;
@@ -10,25 +10,29 @@ package Perl::Critic::Policy::CodeLayout::RequireASCII;
 use 5.006;
 use strict;
 use warnings;
+
 use Readonly;
-use Perl::Critic::Utils qw{ :severities };
+
 use List::MoreUtils qw(none any);
+
+use Perl::Critic::Utils qw{ :severities };
 use base 'Perl::Critic::Policy';
 
-our $VERSION = 0.16;
+our $VERSION = '0.999_001';
 
-Readonly my $MAX_ASCII_VALUE => 127;
-
-#---------------------------------------------------------------------------
-
-my $desc = 'Use only ASCII code';
-my $expl = 'Put any non-ASCII in separate files';
+Readonly::Scalar my $MAX_ASCII_VALUE => 127;
 
 #---------------------------------------------------------------------------
 
-sub default_severity { return $SEVERITY_LOWEST }
-sub default_themes   { return qw(more notrecommended) }
-sub applies_to       { return 'PPI::Token' }
+Readonly::Scalar my $DESC => 'Use only ASCII code';
+Readonly::Scalar my $EXPL => 'Put any non-ASCII in separate files';
+
+#---------------------------------------------------------------------------
+
+sub default_severity     { return $SEVERITY_LOWEST }
+sub default_themes       { return qw< more notrecommended > }
+sub applies_to           { return 'PPI::Token' }
+sub supported_parameters { return () }
 
 #---------------------------------------------------------------------------
 
@@ -36,12 +40,12 @@ sub violates {
     my ( $self, $elem, $doc ) = @_;
 
     if ( any { $_ > $MAX_ASCII_VALUE } unpack 'C*', "$elem" ) {
-        return $self->violation( $desc, $expl, $elem );
+        return $self->violation( $DESC, $EXPL, $elem );
     }
     if ( $elem->isa('PPI::Token::HereDoc') ) {
         for my $line ( $elem->heredoc ) {
             if ( any { $_ > $MAX_ASCII_VALUE } unpack 'C*', $line ) {
-                return $self->violation( $desc, $expl, $elem );
+                return $self->violation( $DESC, $EXPL, $elem );
             }
         }
     }
@@ -65,7 +69,7 @@ Perl::Critic::Policy::CodeLayout::RequireASCII - Disallow high-bit characters
 
 =head1 AFFILIATION
 
-This policy is part of L<Perl::Critic::More>, a bleading edge supplement to
+This policy is part of L<Perl::Critic::More>, a bleeding edge supplement to
 L<Perl::Critic>.
 
 =head1 DESCRIPTION
@@ -94,7 +98,7 @@ Chris Dolan <cdolan@cpan.org>
 
 =head1 COPYRIGHT
 
-Copyright (c) 2006-2007 Chris Dolan
+Copyright (c) 2006-2008 Chris Dolan
 
 This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.  The full text of this license
@@ -109,4 +113,4 @@ can be found in the LICENSE file included with this module.
 #   indent-tabs-mode: nil
 #   c-indentation-style: bsd
 # End:
-# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab :
+# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab shiftround :

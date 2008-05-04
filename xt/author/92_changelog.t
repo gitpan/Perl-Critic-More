@@ -1,12 +1,11 @@
 #!perl -w
-use warnings;
-use strict;
-use ExtUtils::Manifest qw(maniread);
-use Test::More;
 
-if (!$ENV{TEST_AUTHOR}) {
-    plan skip_all => 'Author test';
-}
+use strict;
+use warnings;
+
+use ExtUtils::Manifest qw< maniread >;
+
+use Test::More;
 
 my $manifest = maniread();
 my @policies = sort map { m{/Policy/(\w+)/(\w+)\.} ? $1.q{::}.$2 : ()} keys %{$manifest};
@@ -35,4 +34,4 @@ for my $policy (@policies) {
 #   indent-tabs-mode: nil
 #   c-indentation-style: bsd
 # End:
-# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab :
+# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab shiftround :

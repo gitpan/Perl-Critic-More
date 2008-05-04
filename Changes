@@ -1,9 +1,15 @@
 ##############################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/Changes $
-#     $Date: 2007-08-12 11:37:37 -0500 (Sun, 12 Aug 2007) $
-#   $Author: chrisdolan $
-# $Revision: 1831 $
+#     $Date: 2008-03-08 15:57:03 -0600 (Sat, 08 Mar 2008) $
+#   $Author: clonezone $
+# $Revision: 2167 $
 ##############################################################################
+
+[0.xx] Released on 2008-xx-xx
+
+     Policy moved:
+     * ValuesAndExpressions::ProhibitMagicNumbers has been moved into the
+       core Perl::Critic distribution.
 
 [0.16] Released on 2007-08-12
      Bugfix release

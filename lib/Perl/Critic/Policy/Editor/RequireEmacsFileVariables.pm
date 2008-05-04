@@ -1,8 +1,8 @@
 #######################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/lib/Perl/Critic/Policy/Editor/RequireEmacsFileVariables.pm $
-#     $Date: 2007-08-12 11:37:37 -0500 (Sun, 12 Aug 2007) $
-#   $Author: chrisdolan $
-# $Revision: 1831 $
+#     $Date: 2008-05-04 15:05:26 -0500 (Sun, 04 May 2008) $
+#   $Author: clonezone $
+# $Revision: 2311 $
 ########################################################################
 
 package Perl::Critic::Policy::Editor::RequireEmacsFileVariables;
@@ -10,34 +10,29 @@ package Perl::Critic::Policy::Editor::RequireEmacsFileVariables;
 use 5.006;
 use strict;
 use warnings;
+
 use Readonly;
+
 use Perl::Critic::Utils qw{ :severities };
 use base 'Perl::Critic::Policy';
 
-our $VERSION = 0.16;
+our $VERSION = '0.999_001';
 
 # This constant is hard-coded in emacs file.el
-Readonly my $LOOK_BYTES_FROM_END => 3000;
+Readonly::Scalar my $LOOK_BYTES_FROM_END => 3000;
 
 #---------------------------------------------------------------------------
 
-my $desc = 'Use Emacs file variables to declare coding style';
-my $expl = 'Emacs can read per-file settings';
+Readonly::Scalar my $DESC =>
+    'Use Emacs file variables to declare coding style';
+Readonly::Scalar my $expl => 'Emacs can read per-file settings';
 
 #---------------------------------------------------------------------------
 
-sub default_severity { return $SEVERITY_LOW }
-sub default_themes   { return qw(more readability editor) }
-sub applies_to       { return 'PPI::Document' }
-
-#---------------------------------------------------------------------------
-
-sub new {
-    my ( $class, %config ) = @_;
-    my $self = bless {}, $class;
-
-    return $self;
-}
+sub default_severity     { return $SEVERITY_LOW }
+sub default_themes       { return qw< more readability editor > }
+sub applies_to           { return 'PPI::Document' }
+sub supported_parameters { return () }
 
 #---------------------------------------------------------------------------
 
@@ -73,13 +68,17 @@ sub violates {
     # This regex is transliterated from emacs22 files.el
     # Note that the [ \t]* before "End:" appears to be wrong, but is
     # added for compatibility
-    return if $last_page =~ m/
-                              ^ ([^\n]*) Local [ ] Variables: [ \t]* ([^\n]*) $
-                              .*?
-                              ^ \1 [ \t]* End: [ \t]* \2 $
-                            /ixms;
 
-    return $self->violation( $desc, $expl, $doc );
+    ## Due to the backreferences, this is almost impossible to subdivide.
+    ## no critic (ProhibitComplexRegexes)
+    return if $last_page =~ m<
+        ^ ([^\n]*) Local [ ] Variables: [ \t]* ([^\n]*) $
+        .*?
+        ^ \1 [ \t]* End: [ \t]* \2 $
+    >ixms;
+    ## use critic
+
+    return $self->violation( $DESC, $expl, $doc );
 }
 
 1;
@@ -90,7 +89,7 @@ __END__
 
 =pod
 
-=for stopwords elisp syntaxes files.el
+=for stopwords elisp emacs formfeed syntaxes files.el
 
 =head1 NAME
 
@@ -98,7 +97,7 @@ Perl::Critic::Policy::Editor::RequireEmacsFileVariables - Per-file editor settin
 
 =head1 AFFILIATION
 
-This policy is part of L<Perl::Critic::More>, a bleading edge supplement to
+This policy is part of L<Perl::Critic::More>, a bleeding edge supplement to
 L<Perl::Critic>.
 
 =head1 DESCRIPTION
@@ -150,7 +149,7 @@ Michael Wolf <MichaelRWolf@att.net>
 
 =head1 COPYRIGHT
 
-Copyright (c) 2006-2007 Chris Dolan
+Copyright (c) 2006-2008 Chris Dolan
 
 This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.  The full text of this license
@@ -167,4 +166,4 @@ can be found in the LICENSE file included with this module.
 #   indent-tabs-mode: nil
 #   c-indentation-style: bsd
 # End:
-# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab :
+# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab shiftround :

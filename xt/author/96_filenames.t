@@ -1,14 +1,11 @@
 #!/usr/bin/perl -w
 
-use warnings;
 use strict;
-use Test::More;
-if (!$ENV{TEST_AUTHOR}) {
-    plan skip_all => 'Author test';
-}
+use warnings;
 
-eval 'use Test::Portability::Files';
-plan skip_all => 'Optional Test::Portability::Files required to check filenames' if $@;
+use Test::More;
+
+use Test::Portability::Files;
 
 if (Test::Portability::Files->VERSION eq '0.05') {
    # Workaround for bug in v0.05: options() is broken -- can't turn off tests
@@ -33,4 +30,4 @@ run_tests();
 #   indent-tabs-mode: nil
 #   c-indentation-style: bsd
 # End:
-# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab :
+# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab shiftround :

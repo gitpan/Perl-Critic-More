@@ -1,8 +1,8 @@
 #######################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/lib/Perl/Critic/Policy/Modules/RequirePerlVersion.pm $
-#     $Date: 2007-08-12 11:37:37 -0500 (Sun, 12 Aug 2007) $
-#   $Author: chrisdolan $
-# $Revision: 1831 $
+#     $Date: 2008-05-04 15:05:26 -0500 (Sun, 04 May 2008) $
+#   $Author: clonezone $
+# $Revision: 2311 $
 ########################################################################
 
 package Perl::Critic::Policy::Modules::RequirePerlVersion;
@@ -10,21 +10,25 @@ package Perl::Critic::Policy::Modules::RequirePerlVersion;
 use 5.006;
 use strict;
 use warnings;
+
+use Readonly;
+
 use Perl::Critic::Utils qw{ :severities };
 use base 'Perl::Critic::Policy';
 
-our $VERSION = 0.16;
+our $VERSION = '0.999_001';
 
 #---------------------------------------------------------------------------
 
-my $desc = 'Missing Perl version';
-my $expl = 'Add "use 5.006" or similar';
+Readonly::Scalar my $DESC => 'Missing Perl version';
+Readonly::Scalar my $EXPL => 'Add "use 5.006" or similar';
 
 #---------------------------------------------------------------------------
 
-sub default_severity { return $SEVERITY_LOWEST }
-sub default_themes   { return qw(more compatibility) }
-sub applies_to       { return 'PPI::Document' }
+sub default_severity     { return $SEVERITY_LOWEST }
+sub default_themes       { return qw< more compatibility > }
+sub applies_to           { return 'PPI::Document' }
+sub supported_parameters { return () }
 
 #---------------------------------------------------------------------------
 
@@ -36,11 +40,22 @@ sub violates {
         for my $stmt ( @{$includes} ) {
             next if $stmt->type ne 'use';
             return if $stmt->version;
-            return if $stmt->module =~ m/\A v\d+(?:\.\d+(?:_\d+)?)*\z/xms;
+            return if $stmt->module =~ m<
+                \A
+                v
+                \d+
+                (?:
+                    [.] \d+
+                    (?:
+                        _ \d+
+                    )?
+                )*
+                \z
+            >xms;
         }
     }
 
-    return $self->violation( $desc, $expl, $doc );
+    return $self->violation( $DESC, $EXPL, $doc );
 }
 
 1;
@@ -59,7 +74,7 @@ Perl::Critic::Policy::Modules::RequirePerlVersion - Expect a C<use 5.006;> or si
 
 =head1 AFFILIATION
 
-This policy is part of L<Perl::Critic::More>, a bleading edge supplement to
+This policy is part of L<Perl::Critic::More>, a bleeding edge supplement to
 L<Perl::Critic>.
 
 =head1 DESCRIPTION
@@ -92,7 +107,7 @@ Chris Dolan <cdolan@cpan.org>
 
 =head1 COPYRIGHT
 
-Copyright (c) 2006-2007 Chris Dolan
+Copyright (c) 2006-2008 Chris Dolan
 
 This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.  The full text of this license
@@ -107,4 +122,4 @@ can be found in the LICENSE file included with this module.
 #   indent-tabs-mode: nil
 #   c-indentation-style: bsd
 # End:
-# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab :
+# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab shiftround :

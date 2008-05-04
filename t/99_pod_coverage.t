@@ -2,9 +2,9 @@
 
 ##################################################################
 #     $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/t/99_pod_coverage.t $
-#    $Date: 2007-02-18 09:08:02 -0600 (Sun, 18 Feb 2007) $
+#    $Date: 2008-05-04 14:47:40 -0500 (Sun, 04 May 2008) $
 #   $Author: clonezone $
-# $Revision: 1252 $
+# $Revision: 2307 $
 ##################################################################
 
 use strict;
@@ -60,4 +60,4 @@ sub get_trusted_methods {
 #   indent-tabs-mode: nil
 #   c-indentation-style: bsd
 # End:
-# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab :
+# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab shiftround :

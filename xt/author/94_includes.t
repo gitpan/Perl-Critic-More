@@ -1,18 +1,12 @@
 #!perl
 
-use warnings;
 use strict;
-
-use Test::More;
+use warnings;
 
 use File::Find;
 use PPI::Document;
 
-use Perl::Critic::TestUtils qw{ should_skip_author_tests get_author_test_skip_message };
-
-if (should_skip_author_tests()) {
-    plan skip_all => get_author_test_skip_message();
-}
+use Test::More;
 
 my %implied = (
     # Universal
@@ -88,4 +82,4 @@ sub match {
 #   indent-tabs-mode: nil
 #   c-indentation-style: bsd
 # End:
-# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab :
+# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab shiftround :

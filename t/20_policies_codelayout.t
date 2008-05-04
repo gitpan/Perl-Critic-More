@@ -2,9 +2,9 @@
 
 ##################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/t/20_policies_codelayout.t $
-#     $Date: 2006-11-26 14:14:43 -0600 (Sun, 26 Nov 2006) $
+#     $Date: 2008-05-04 14:47:40 -0500 (Sun, 04 May 2008) $
 #   $Author: clonezone $
-# $Revision: 960 $
+# $Revision: 2307 $
 ##################################################################
 
 use v5.6;
@@ -96,4 +96,4 @@ is( pcritique($policy, \$code), 1, $policy.' - UTF-8 (random option-keys from my
 #   indent-tabs-mode: nil
 #   c-indentation-style: bsd
 # End:
-# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab :
+# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab shiftround :

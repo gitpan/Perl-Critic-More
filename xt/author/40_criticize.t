@@ -1,29 +1,25 @@
 #!perl
 
 ##############################################################################
-#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/t/40_criticize.t $
-#     $Date: 2006-11-26 14:14:43 -0600 (Sun, 26 Nov 2006) $
+#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/xt/author/40_criticize.t $
+#     $Date: 2008-05-04 14:47:40 -0500 (Sun, 04 May 2008) $
 #   $Author: clonezone $
-# $Revision: 960 $
+# $Revision: 2307 $
 ##############################################################################
 
 # Self-compliance tests
 
 use strict;
 use warnings;
-use English qw( -no_match_vars );
+
+use English qw< -no_match_vars >;
+
 use File::Spec qw();
-use Test::More;
+
 use Perl::Critic::PolicyFactory;
 
-if (!$ENV{TEST_AUTHOR}) {
-    plan skip_all => 'Author test';
-}
-
-#-----------------------------------------------------------------------------
-
-eval { require Test::Perl::Critic; };
-plan skip_all => 'Test::Perl::Critic required to criticise code' if $EVAL_ERROR;
+use Test::More;
+use Test::Perl::Critic;
 
 #-----------------------------------------------------------------------------
 # Set up PPI caching for speed (used primarily during development)
@@ -43,7 +39,7 @@ if ( $ENV{PERL_CRITIC_CACHE} ) {
 #-----------------------------------------------------------------------------
 # Run critic against all of our own files
 
-my $rcfile = File::Spec->catfile( 't', '40_perlcriticrc' );
+my $rcfile = File::Spec->catfile( qw< xt author 40_perlcriticrc > );
 Test::Perl::Critic->import( -severity => 1, -profile => $rcfile );
 all_critic_ok();
 
@@ -54,4 +50,4 @@ all_critic_ok();
 #   indent-tabs-mode: nil
 #   c-indentation-style: bsd
 # End:
-# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab :
+# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab shiftround :

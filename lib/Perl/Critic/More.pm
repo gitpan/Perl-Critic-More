@@ -1,15 +1,16 @@
 ##############################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/lib/Perl/Critic/More.pm $
-#     $Date: 2007-08-12 11:37:37 -0500 (Sun, 12 Aug 2007) $
-#   $Author: chrisdolan $
-# $Revision: 1831 $
+#     $Date: 2008-05-04 15:05:26 -0500 (Sun, 04 May 2008) $
+#   $Author: clonezone $
+# $Revision: 2311 $
 ##############################################################################
 package Perl::Critic::More;
 
 use 5.006;
 use warnings;
 use strict;
-our $VERSION = 0.16;
+
+our $VERSION = '0.999_001';
 
 1;
 
@@ -102,7 +103,7 @@ L<http://perlcritic.tigris.org>.
 
 =head1 COPYRIGHT
 
-Copyright (c) 2006-2007 Chris Dolan
+Copyright (c) 2006-2008 Chris Dolan
 
 This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.  The full text of this license
@@ -117,4 +118,4 @@ can be found in the LICENSE file included with this module.
 #   indent-tabs-mode: nil
 #   c-indentation-style: bsd
 # End:
-# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab :
+# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab shiftround :

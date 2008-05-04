@@ -1,8 +1,8 @@
 #######################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/lib/Perl/Critic/Policy/Modules/PerlMinimumVersion.pm $
-#     $Date: 2007-08-12 11:37:37 -0500 (Sun, 12 Aug 2007) $
-#   $Author: chrisdolan $
-# $Revision: 1831 $
+#     $Date: 2008-05-04 15:05:26 -0500 (Sun, 04 May 2008) $
+#   $Author: clonezone $
+# $Revision: 2311 $
 ########################################################################
 
 package Perl::Critic::Policy::Modules::PerlMinimumVersion;
@@ -10,40 +10,59 @@ package Perl::Critic::Policy::Modules::PerlMinimumVersion;
 use 5.006;
 use strict;
 use warnings;
-use Perl::Critic::Utils qw{ :severities };
+
 use English qw(-no_match_vars);
-use Carp;
+use Readonly;
+
+use Perl::Critic::Utils qw{ :severities };
+
 use base 'Perl::Critic::Policy';
 
-our $VERSION = 0.16;
+our $VERSION = '0.999_001';
 
 #---------------------------------------------------------------------------
 
-my $desc = 'Avoid Perl features newer than specified version';
-my $expl = 'Improve your backward compatibility';
+Readonly::Scalar my $DESC =>
+    'Avoid Perl features newer than specified version';
+Readonly::Scalar my $EXPL => 'Improve your backward compatibility';
 
 #---------------------------------------------------------------------------
 
 sub default_severity { return $SEVERITY_LOWEST }
-sub default_themes   { return qw(more compatibility) }
+sub default_themes   { return qw< more compatibility > }
 sub applies_to       { return 'PPI::Document' }
+
+sub supported_parameters {
+    return (
+        {   name        => 'version',
+            description => 'Version of perl to be compatible with.',
+            behavior    => 'string',
+            parser      => \&_parse_version,
+        },
+    );
+}
 
 #---------------------------------------------------------------------------
 
-sub new {
-    my ( $class, %config ) = @_;
-    my $self = bless {}, $class;
+sub _parse_version {
+    my ( $self, $parameter, $config_string ) = @_;
 
-    $self->{_version} = $PERL_VERSION;
-    if ( $config{version} ) {
-        if ( $config{version} =~ m/\A \s* (5\.[\d\.]+) \s* \z/xms ) {
-            $self->{_version} = $1;
+    my $version;
+    if ($config_string) {
+        if ( $config_string =~ m<\A \s* (5 [.] [\d.]+) \s* \z>xms ) {
+            $version = $1;
         } else {
-            croak 'Invalid PerlMinimumVersion number in Perl::Critic config';
+            $self->throw_parameter_value_exception( 'version', $config_string,
+                undef, "doesn't look like a perl version number.\n",
+            );
         }
+    } else {
+        $version = 0 + $PERL_VERSION;    # numify to get away from version.pm
     }
 
-    return $self;
+    $self->{_version} = $version;
+
+    return;
 }
 
 #---------------------------------------------------------------------------
@@ -66,9 +85,11 @@ sub violates {
 
     # this returns a version.pm instance
     my $doc_version = $checker->minimum_version();
+
+    #print "v$doc_version vs. $self->{_version}\n";
     return if $doc_version <= $self->{_version};
 
-    return $self->violation( $desc, $expl, $doc );
+    return $self->violation( $DESC, $EXPL, $doc );
 }
 
 1;
@@ -87,7 +108,7 @@ Perl::Critic::Policy::Modules::PerlMinimumVersion - Enforce backward compatible 
 
 =head1 AFFILIATION
 
-This policy is part of L<Perl::Critic::More>, a bleading edge supplement to
+This policy is part of L<Perl::Critic::More>, a bleeding edge supplement to
 L<Perl::Critic>.
 
 =head1 DESCRIPTION
@@ -114,7 +135,7 @@ Chris Dolan <cdolan@cpan.org>
 
 =head1 COPYRIGHT
 
-Copyright (c) 2006-2007 Chris Dolan
+Copyright (c) 2006-2008 Chris Dolan
 
 This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.  The full text of this license
@@ -129,4 +150,4 @@ can be found in the LICENSE file included with this module.
 #   indent-tabs-mode: nil
 #   c-indentation-style: bsd
 # End:
-# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab :
+# ex: set ts=8 sts=4 sw=4 tw=78 ft=perl expandtab shiftround :
