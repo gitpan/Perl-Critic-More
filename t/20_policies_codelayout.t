@@ -2,12 +2,12 @@
 
 ##################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/t/20_policies_codelayout.t $
-#     $Date: 2008-05-04 14:47:40 -0500 (Sun, 04 May 2008) $
+#     $Date: 2008-05-18 19:07:35 -0500 (Sun, 18 May 2008) $
 #   $Author: clonezone $
-# $Revision: 2307 $
+# $Revision: 2368 $
 ##################################################################
 
-use v5.6;
+use 5.006;
 use strict;
 use warnings;
 use utf8;

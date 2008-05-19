@@ -1,23 +1,34 @@
 ##############################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/Changes $
-#     $Date: 2008-03-08 15:57:03 -0600 (Sat, 08 Mar 2008) $
+#     $Date: 2008-05-18 19:23:38 -0500 (Sun, 18 May 2008) $
 #   $Author: clonezone $
-# $Revision: 2167 $
+# $Revision: 2371 $
 ##############################################################################
 
-[0.xx] Released on 2008-xx-xx
+[0.999_002] Released on 2008-05-18
+
+     Bug Fix:
+     * Modules::PerlMinimumVersion now handles $PERL_VERSION being an object,
+       as it is in perl 5.10.
+
+[0.999_001] Released on 2008-05-04
 
      Policy moved:
      * ValuesAndExpressions::ProhibitMagicNumbers has been moved into the
        core Perl::Critic distribution.
 
+     Dependencies:
+     * Now requires Perl::Critic 1.082.
+
 [0.16] Released on 2007-08-12
+
      Bugfix release
       * PPI version back down to 1.118, but turn off ProhibitMagicNumbers with older PPI
       * work around v-string warning
      [Thanks to users of CPAN::Reporter for identifying bugs!]
 
 [0.15]  Released on 2007-08-10
+
      Bugfix release
       * Readonly dependency omitted
       * PPI version => 1.199_03

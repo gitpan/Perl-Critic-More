@@ -1,8 +1,8 @@
 ##############################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/lib/Perl/Critic/More.pm $
-#     $Date: 2008-05-04 15:05:26 -0500 (Sun, 04 May 2008) $
+#     $Date: 2008-05-18 19:30:24 -0500 (Sun, 18 May 2008) $
 #   $Author: clonezone $
-# $Revision: 2311 $
+# $Revision: 2372 $
 ##############################################################################
 package Perl::Critic::More;
 
@@ -10,7 +10,7 @@ use 5.006;
 use warnings;
 use strict;
 
-our $VERSION = '0.999_001';
+our $VERSION = '0.999_002';
 
 1;
 

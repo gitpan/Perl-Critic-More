@@ -1,8 +1,8 @@
 #######################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/lib/Perl/Critic/Policy/Modules/PerlMinimumVersion.pm $
-#     $Date: 2008-05-04 15:05:26 -0500 (Sun, 04 May 2008) $
+#     $Date: 2008-05-18 19:33:53 -0500 (Sun, 18 May 2008) $
 #   $Author: clonezone $
-# $Revision: 2311 $
+# $Revision: 2373 $
 ########################################################################
 
 package Perl::Critic::Policy::Modules::PerlMinimumVersion;
@@ -18,7 +18,7 @@ use Perl::Critic::Utils qw{ :severities };
 
 use base 'Perl::Critic::Policy';
 
-our $VERSION = '0.999_001';
+our $VERSION = '0.999_002';
 
 #---------------------------------------------------------------------------
 
@@ -56,6 +56,8 @@ sub _parse_version {
                 undef, "doesn't look like a perl version number.\n",
             );
         }
+    } elsif ( ref $PERL_VERSION ) {
+        $version = $PERL_VERSION->numify();    # It's an object as of 5.10.
     } else {
         $version = 0 + $PERL_VERSION;    # numify to get away from version.pm
     }
@@ -104,7 +106,7 @@ __END__
 
 =head1 NAME
 
-Perl::Critic::Policy::Modules::PerlMinimumVersion - Enforce backward compatible code
+Perl::Critic::Policy::Modules::PerlMinimumVersion - Enforce backward compatible code.
 
 =head1 AFFILIATION
 
