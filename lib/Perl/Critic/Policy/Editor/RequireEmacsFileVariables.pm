@@ -1,8 +1,8 @@
 #######################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/lib/Perl/Critic/Policy/Editor/RequireEmacsFileVariables.pm $
-#     $Date: 2008-05-18 19:30:24 -0500 (Sun, 18 May 2008) $
+#     $Date: 2008-05-26 16:44:53 -0500 (Mon, 26 May 2008) $
 #   $Author: clonezone $
-# $Revision: 2372 $
+# $Revision: 2407 $
 ########################################################################
 
 package Perl::Critic::Policy::Editor::RequireEmacsFileVariables;
@@ -16,7 +16,7 @@ use Readonly;
 use Perl::Critic::Utils qw{ :severities };
 use base 'Perl::Critic::Policy';
 
-our $VERSION = '0.999_002';
+our $VERSION = '1.000';
 
 # This constant is hard-coded in emacs file.el
 Readonly::Scalar my $LOOK_BYTES_FROM_END => 3000;

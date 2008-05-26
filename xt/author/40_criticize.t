@@ -2,9 +2,9 @@
 
 ##############################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/xt/author/40_criticize.t $
-#     $Date: 2008-05-04 14:47:40 -0500 (Sun, 04 May 2008) $
+#     $Date: 2008-05-26 16:25:10 -0500 (Mon, 26 May 2008) $
 #   $Author: clonezone $
-# $Revision: 2307 $
+# $Revision: 2405 $
 ##############################################################################
 
 # Self-compliance tests
@@ -25,11 +25,12 @@ use Test::Perl::Critic;
 # Set up PPI caching for speed (used primarily during development)
 
 if ( $ENV{PERL_CRITIC_CACHE} ) {
-    require File::Spec;
     require PPI::Cache;
-    my $cache_path
-        = File::Spec->catdir( File::Spec->tmpdir,
-                              'test-perl-critic-cache-'.$ENV{USER} );
+    my $cache_path =
+        File::Spec->catdir(
+            File::Spec->tmpdir,
+            "test-perl-critic-cache-$ENV{USER}",
+        );
     if ( ! -d $cache_path) {
         mkdir $cache_path, oct 700;
     }

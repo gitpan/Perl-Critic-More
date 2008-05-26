@@ -1,17 +1,15 @@
 ##############################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/Changes $
-#     $Date: 2008-05-18 19:23:38 -0500 (Sun, 18 May 2008) $
+#     $Date: 2008-05-26 16:29:50 -0500 (Mon, 26 May 2008) $
 #   $Author: clonezone $
-# $Revision: 2371 $
+# $Revision: 2406 $
 ##############################################################################
 
-[0.999_002] Released on 2008-05-18
+[1.000] Released on 2008-05-26
 
      Bug Fix:
      * Modules::PerlMinimumVersion now handles $PERL_VERSION being an object,
        as it is in perl 5.10.
-
-[0.999_001] Released on 2008-05-04
 
      Policy moved:
      * ValuesAndExpressions::ProhibitMagicNumbers has been moved into the
@@ -19,6 +17,12 @@
 
      Dependencies:
      * Now requires Perl::Critic 1.082.
+
+[0.999_002] Released on 2008-05-18
+[0.999_001] Released on 2008-05-04
+
+     Changes summarized into 1.000 above.  For exact details, see Changes in
+     0.999_002 on BackPAN.
 
 [0.16] Released on 2007-08-12
 
