@@ -1,13 +1,14 @@
 #######################################################################
-#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/lib/Perl/Critic/Policy/CodeLayout/RequireASCII.pm $
-#     $Date: 2008-05-26 16:44:53 -0500 (Mon, 26 May 2008) $
-#   $Author: clonezone $
-# $Revision: 2407 $
+#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/distributions/Perl-Critic-More/lib/Perl/Critic/Policy/CodeLayout/RequireASCII.pm $
+#     $Date: 2013-10-25 12:21:21 -0700 (Fri, 25 Oct 2013) $
+#   $Author: thaljef $
+# $Revision: 4176 $
 ########################################################################
 
 package Perl::Critic::Policy::CodeLayout::RequireASCII;
 
-use 5.006;
+use 5.006001;
+
 use strict;
 use warnings;
 
@@ -18,7 +19,7 @@ use List::MoreUtils qw(none any);
 use Perl::Critic::Utils qw{ :severities };
 use base 'Perl::Critic::Policy';
 
-our $VERSION = '1.000';
+our $VERSION = '1.001';
 
 Readonly::Scalar my $MAX_ASCII_VALUE => 127;
 
@@ -69,8 +70,8 @@ Perl::Critic::Policy::CodeLayout::RequireASCII - Disallow high-bit characters.
 
 =head1 AFFILIATION
 
-This policy is part of L<Perl::Critic::More>, a bleeding edge supplement to
-L<Perl::Critic>.
+This policy is part of L<Perl::Critic::More|Perl::Critic::More>, a bleeding
+edge supplement to L<Perl::Critic|Perl::Critic>.
 
 =head1 DESCRIPTION
 

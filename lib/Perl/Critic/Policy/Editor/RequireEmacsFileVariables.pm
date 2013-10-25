@@ -1,13 +1,14 @@
 #######################################################################
-#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/lib/Perl/Critic/Policy/Editor/RequireEmacsFileVariables.pm $
-#     $Date: 2008-05-26 16:44:53 -0500 (Mon, 26 May 2008) $
-#   $Author: clonezone $
-# $Revision: 2407 $
+#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/distributions/Perl-Critic-More/lib/Perl/Critic/Policy/Editor/RequireEmacsFileVariables.pm $
+#     $Date: 2013-10-25 12:46:41 -0700 (Fri, 25 Oct 2013) $
+#   $Author: thaljef $
+# $Revision: 4182 $
 ########################################################################
 
 package Perl::Critic::Policy::Editor::RequireEmacsFileVariables;
 
-use 5.006;
+use 5.006001;
+
 use strict;
 use warnings;
 
@@ -16,7 +17,7 @@ use Readonly;
 use Perl::Critic::Utils qw{ :severities };
 use base 'Perl::Critic::Policy';
 
-our $VERSION = '1.000';
+our $VERSION = '1.001';
 
 # This constant is hard-coded in emacs file.el
 Readonly::Scalar my $LOOK_BYTES_FROM_END => 3000;
@@ -25,7 +26,7 @@ Readonly::Scalar my $LOOK_BYTES_FROM_END => 3000;
 
 Readonly::Scalar my $DESC =>
     'Use Emacs file variables to declare coding style';
-Readonly::Scalar my $expl => 'Emacs can read per-file settings';
+Readonly::Scalar my $EXPL => 'Emacs can read per-file settings';
 
 #---------------------------------------------------------------------------
 
@@ -52,7 +53,7 @@ sub violates {
     return if $first_line =~ m/$one_line_local_var/xms;
     return
         if ( $second_line
-        && $first_line  =~ m/\A \#!/xms
+        && $first_line =~ m/\A \#!/xms
         && $second_line =~ m/$one_line_local_var/xms );
 
     ## Look for end of doc file vars  Example:
@@ -78,7 +79,7 @@ sub violates {
     >ixms;
     ## use critic
 
-    return $self->violation( $DESC, $expl, $doc );
+    return $self->violation( $DESC, $EXPL, $doc );
 }
 
 1;
@@ -97,8 +98,8 @@ Perl::Critic::Policy::Editor::RequireEmacsFileVariables - Per-file editor settin
 
 =head1 AFFILIATION
 
-This policy is part of L<Perl::Critic::More>, a bleeding edge supplement to
-L<Perl::Critic>.
+This policy is part of L<Perl::Critic::More|Perl::Critic::More>, a bleeding
+edge supplement to L<Perl::Critic|Perl::Critic>.
 
 =head1 DESCRIPTION
 
@@ -124,13 +125,13 @@ The following examples are explicitly allowed by Perl:
 The multi-line syntax must be used "in the last page" (that is, after
 the last formfeed) at the end of the file.  As of Emacs21, the "end of
 the file" is hard-coded to be the last 3000 bytes of the file (in the
-hack-local-variables function in files.el).  In this syntax, each line
+hack-local-variables function in F<files.el>).  In this syntax, each line
 must begin and end with the same prefix/suffix pair.  That pair is
 defined by the text before and after the "Local Variables:" string.
 
 =head1 SEE ALSO
 
-L<Perl::Critic::Policy::Editor::RequireViModeline>
+L<Perl::Critic::Policy::Editor::RequireViModeline|Perl::Critic::Policy::Editor::RequireViModeline>
 
 L<http://www.gnu.org/software/emacs/manual/html_node/File-Variables.html>
 

@@ -1,9 +1,20 @@
 ##############################################################################
-#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/Changes $
-#     $Date: 2008-05-26 16:29:50 -0500 (Mon, 26 May 2008) $
-#   $Author: clonezone $
-# $Revision: 2406 $
+#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/distributions/Perl-Critic-More/Changes $
+#     $Date: 2013-10-25 12:22:07 -0700 (Fri, 25 Oct 2013) $
+#   $Author: thaljef $
+# $Revision: 4177 $
 ##############################################################################
+
+[1.001] Released on 2013-10-25
+
+    New Policies:
+    * ValuesAndExpressions::RequireConstantOnLeftSideOfEquality -- In
+      case you accidentally say "if ($foo = 42) {...}"
+
+    * Miscellanea::RequireRcsKeywords -- This policy was moved here
+      from the Perl-Critic core.  See RT #69546.
+
+    "use 5.006001" in Makefile.PL and Build.PL.
 
 [1.000] Released on 2008-05-26
 

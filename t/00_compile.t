@@ -1,7 +1,7 @@
 #!perl
 ##############################################################################
-#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/t/00_compile.t $
-#     $Date: 2008-05-18 19:16:51 -0500 (Sun, 18 May 2008) $
+#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/distributions/Perl-Critic-More/t/00_compile.t $
+#     $Date: 2008-05-18 17:16:51 -0700 (Sun, 18 May 2008) $
 #   $Author: clonezone $
 # $Revision: 2370 $
 ##############################################################################

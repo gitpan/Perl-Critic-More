@@ -1,13 +1,14 @@
 #######################################################################
-#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/lib/Perl/Critic/Policy/ValuesAndExpressions/RestrictLongStrings.pm $
-#     $Date: 2008-05-26 16:44:53 -0500 (Mon, 26 May 2008) $
-#   $Author: clonezone $
-# $Revision: 2407 $
+#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/distributions/Perl-Critic-More/lib/Perl/Critic/Policy/ValuesAndExpressions/RestrictLongStrings.pm $
+#     $Date: 2013-10-25 13:39:06 -0700 (Fri, 25 Oct 2013) $
+#   $Author: thaljef $
+# $Revision: 4184 $
 ########################################################################
 
 package Perl::Critic::Policy::ValuesAndExpressions::RestrictLongStrings;
 
-use 5.006;
+use 5.006001;
+
 use strict;
 use warnings;
 
@@ -17,7 +18,7 @@ use Readonly;
 use Perl::Critic::Utils qw{ :severities };
 use base 'Perl::Critic::Policy';
 
-our $VERSION = '1.000';
+our $VERSION = '1.001';
 
 #---------------------------------------------------------------------------
 
@@ -61,7 +62,7 @@ sub violates {
 
             # Anonymous subroutine
             my $sib = $stmt_parent->sprevious_sibling;
-            return if $sib && $sib->isa('PPI::Token::Word') && $sib eq 'sub';
+            return if $sib && $sib->isa('PPI::Token::Word') && 'sub' eq $sib;
         }
     }
 
@@ -82,10 +83,12 @@ __END__
 
 Perl::Critic::Policy::ValuesAndExpressions::RestrictLongStrings - Stop mixing long strings with code.
 
+
 =head1 AFFILIATION
 
-This policy is part of L<Perl::Critic::More>, a bleeding edge supplement to
-L<Perl::Critic>.
+This policy is part of L<Perl::Critic::More|Perl::Critic::More>, a bleeding
+edge supplement to L<Perl::Critic|Perl::Critic>.
+
 
 =head1 DESCRIPTION
 
@@ -101,11 +104,16 @@ you may add the following to your F<.perlcriticrc> file:
   [ValuesAndExpressions::RestrictLongStrings]
   max_length = 50
 
-=head1 SEE ALSO
+
+=head1 TODO
+
+Add option to allow long strings that don't include newlines.
+
 
 =head1 AUTHOR
 
 Chris Dolan <cdolan@cpan.org>
+
 
 =head1 COPYRIGHT
 

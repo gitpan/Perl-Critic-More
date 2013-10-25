@@ -1,8 +1,8 @@
 #!perl
 
 ##################################################################
-#     $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/t/98_pod_syntax.t $
-#    $Date: 2008-05-04 14:47:40 -0500 (Sun, 04 May 2008) $
+#     $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/distributions/Perl-Critic-More/t/98_pod_syntax.t $
+#    $Date: 2008-05-04 12:47:40 -0700 (Sun, 04 May 2008) $
 #   $Author: clonezone $
 # $Revision: 2307 $
 ##################################################################

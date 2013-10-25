@@ -1,63 +1,37 @@
 #!perl
 
-#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/Build.PL $
-#     $Date: 2008-05-18 18:40:27 -0500 (Sun, 18 May 2008) $
-#   $Author: clonezone $
-# $Revision: 2366 $
+#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/distributions/Perl-Critic-More/Build.PL $
+#     $Date: 2013-10-25 14:52:31 -0700 (Fri, 25 Oct 2013) $
+#   $Author: thaljef $
+# $Revision: 4190 $
 
-use 5.006;
+use 5.006001;
 
 use strict;
 use warnings;
 
-use English qw< -no_match_vars >;
-
-use Module::Build;
+use lib 'inc';
 
 
-my $class = Module::Build->subclass( code => <<'END_SUBCLASS' );
+use Perl::Critic::Module::Build;
 
-    sub ACTION_test {
-        my ($self) = @_;
 
-        $self->depends_on('manifest');
-
-        return $self->SUPER::ACTION_test();
-    }
-
-    sub ACTION_authortest {
-        my ($self) = @_;
-
-        $self->depends_on('build');
-        $self->depends_on('manifest');
-        $self->depends_on('distmeta');
-
-        $self->test_files( qw< t xt/author > );
-        $self->recursive_test_files(1);
-
-        $self->depends_on('test');
-
-        return;
-    } # end ACTION_authortest()
-
-    sub ACTION_distdir {
-        my ($self) = @_;
-
-        $self->depends_on('authortest');
-
-        return $self->SUPER::ACTION_distdir();
-    } # end ACTION_distdir
-
-END_SUBCLASS
-
-my $builder = $class->new(
+my $builder = Perl::Critic::Module::Build->new(
     module_name         => 'Perl::Critic::More',
     dist_author         => 'Chris Dolan <cdolan@cpan.org>',
     license             => 'perl',
     dynamic_config      => 1,
+    create_readme       => 1,
+    create_packlist     => 1,
+    sign                => 0,
+    create_makefile_pl  => 'traditional',
+
+    configure_requires  => {
+        'Module::Build' => 0.40,
+    },
 
     requires            => {
-        'Perl::Critic'  => 1.082,
+        'Perl::Critic'  => 1.098,
         'Readonly'      => 1.03,
     },
 
@@ -69,31 +43,35 @@ my $builder = $class->new(
         'Perl::MinimumVersion' => '0.14',
     },
 
-    create_packlist     => 1,
-
-    sign                => 0,
-
-    create_readme       => 1,
-
-    create_makefile_pl  => 'traditional',
-
     meta_merge          => {
         resources   => {
             homepage    => 'http://perlcritic.com',
             license     => 'http://dev.perl.org/licenses/',
-            Repository  => 'http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/',
+            repository  => 'http://guest@perlcritic.tigris.org/svn/perlcritic/trunk/distributions/Perl-Critic-More/',
             MailingList => 'http://perlcritic.tigris.org/servlets/SummarizeList?listName=users',
-        }
+        },
+        no_index    => {
+            file        => [
+                qw<
+                    TODO.pod
+                >
+            ],
+            directory   => [
+                qw<
+                    xt
+                >
+            ],
+        },
     },
 
     add_to_cleanup      => [
         qw<
-            MANIFEST.bak
             Makefile
             Makefile.old
-            pod2htm?.tmp
-            pm_to_blib
+            MANIFEST.bak
             Perl-Critic-More-*
+            pm_to_blib
+            pod2htm?.tmp
         >,
     ],
 );

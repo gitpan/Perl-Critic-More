@@ -1,13 +1,14 @@
 #######################################################################
-#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/lib/Perl/Critic/Policy/Modules/PerlMinimumVersion.pm $
-#     $Date: 2008-05-26 16:44:53 -0500 (Mon, 26 May 2008) $
-#   $Author: clonezone $
-# $Revision: 2407 $
+#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/distributions/Perl-Critic-More/lib/Perl/Critic/Policy/Modules/PerlMinimumVersion.pm $
+#     $Date: 2013-10-25 12:46:41 -0700 (Fri, 25 Oct 2013) $
+#   $Author: thaljef $
+# $Revision: 4182 $
 ########################################################################
 
 package Perl::Critic::Policy::Modules::PerlMinimumVersion;
 
-use 5.006;
+use 5.006001;
+
 use strict;
 use warnings;
 
@@ -18,7 +19,7 @@ use Perl::Critic::Utils qw{ :severities };
 
 use base 'Perl::Critic::Policy';
 
-our $VERSION = '1.000';
+our $VERSION = '1.001';
 
 #---------------------------------------------------------------------------
 
@@ -72,8 +73,7 @@ sub _parse_version {
 sub violates {
     my ( $self, $elem, $doc ) = @_;
 
-    eval { require Perl::MinimumVersion; };
-    return if $EVAL_ERROR;
+    return if not eval { require Perl::MinimumVersion; 1; };
 
     my $checker = Perl::MinimumVersion->new($doc);
 
@@ -110,8 +110,8 @@ Perl::Critic::Policy::Modules::PerlMinimumVersion - Enforce backward compatible 
 
 =head1 AFFILIATION
 
-This policy is part of L<Perl::Critic::More>, a bleeding edge supplement to
-L<Perl::Critic>.
+This policy is part of L<Perl::Critic::More|Perl::Critic::More>, a bleeding
+edge supplement to L<Perl::Critic|Perl::Critic>.
 
 =head1 DESCRIPTION
 
@@ -128,8 +128,9 @@ then any code that employs C<our> will fail this policy, for example.  By
 default, this policy enforces the current Perl version, which is a pretty weak
 statement.
 
-This policy relies on L<Perl::MinimumVersion> to do the heavy lifting.  If
-that module is not installed, then this policy always passes.
+This policy relies on L<Perl::MinimumVersion|Perl::MinimumVersion> to do the
+heavy lifting.  If that module is not installed, then this policy always
+passes.
 
 =head1 AUTHOR
 

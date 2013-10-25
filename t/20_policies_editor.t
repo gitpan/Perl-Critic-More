@@ -1,8 +1,8 @@
 #!perl
 
 ##################################################################
-#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/t/20_policies_editor.t $
-#     $Date: 2008-05-18 19:07:35 -0500 (Sun, 18 May 2008) $
+#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/distributions/Perl-Critic-More/t/20_policies_editor.t $
+#     $Date: 2008-05-18 17:07:35 -0700 (Sun, 18 May 2008) $
 #   $Author: clonezone $
 # $Revision: 2368 $
 ##################################################################

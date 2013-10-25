@@ -1,16 +1,17 @@
 ##############################################################################
-#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/lib/Perl/Critic/More.pm $
-#     $Date: 2008-05-26 16:44:53 -0500 (Mon, 26 May 2008) $
-#   $Author: clonezone $
-# $Revision: 2407 $
+#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/distributions/Perl-Critic-More/lib/Perl/Critic/More.pm $
+#     $Date: 2013-10-25 12:21:21 -0700 (Fri, 25 Oct 2013) $
+#   $Author: thaljef $
+# $Revision: 4176 $
 ##############################################################################
 package Perl::Critic::More;
 
-use 5.006;
+use 5.006001;
+
 use warnings;
 use strict;
 
-our $VERSION = '1.000';
+our $VERSION = '1.001';
 
 1;
 
@@ -37,8 +38,8 @@ collection of Perl::Critic policies.  All of those policies will have an
 
 =head1 DESCRIPTION
 
-This is a collection of L<Perl::Critic> policies that are not included in
-the Perl::Critic core for a variety of reasons:
+This is a collection of L<Perl::Critic|Perl::Critic> policies that are not
+included in the Perl::Critic core for a variety of reasons:
 
 =over
 
@@ -57,7 +58,9 @@ dependencies are fulfilled.
 =item * Peripheral to Perl
 
 For example, the C<Editor::RequireEmacsFileVariables> policy is metacode.
-These are not part of Perl::Critic's mission.
+Also, the C<Miscellanea::RequireRcsKeywords> policy pertains to the
+development process, not the code itself. These are not part of Perl::Critic's
+mission.
 
 =item * Special purpose
 
@@ -82,13 +85,13 @@ details on how to interact with themes.
 
 =head1 SEE ALSO
 
-L<Perl::Critic>
+L<Perl::Critic|Perl::Critic>
 
-L<Perl::Critic::Bangs> - Andy Lester's fantastic list of code pet peeves
+L<Perl::Critic::Bangs|Perl::Critic::Bangs> - Andy Lester's fantastic list of code pet peeves
 
-L<Perl::Critic::Lax> - RJBS' more-lenient versions of some core Perl::Critic policies
+L<Perl::Critic::Lax|Perl::Critic::Lax> - RJBS' more-lenient versions of some core Perl::Critic policies
 
-L<parrot> - the parrot team has developed a few specialized Perl::Critic
+L<parrot|parrot> - the parrot team has developed a few specialized Perl::Critic
 policies of their own
 
 =head1 AUTHOR

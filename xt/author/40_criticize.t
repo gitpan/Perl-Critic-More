@@ -1,8 +1,8 @@
 #!perl
 
 ##############################################################################
-#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/xt/author/40_criticize.t $
-#     $Date: 2008-05-26 16:25:10 -0500 (Mon, 26 May 2008) $
+#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/distributions/Perl-Critic-More/xt/author/40_criticize.t $
+#     $Date: 2008-05-26 14:25:10 -0700 (Mon, 26 May 2008) $
 #   $Author: clonezone $
 # $Revision: 2405 $
 ##############################################################################

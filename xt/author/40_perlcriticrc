@@ -1,8 +1,8 @@
 ##################################################################
-#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/xt/author/40_perlcriticrc $
-#     $Date: 2008-05-04 14:02:19 -0500 (Sun, 04 May 2008) $
-#   $Author: clonezone $
-# $Revision: 2304 $
+#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/distributions/Perl-Critic-More/xt/author/40_perlcriticrc $
+#     $Date: 2013-10-25 13:34:15 -0700 (Fri, 25 Oct 2013) $
+#   $Author: thaljef $
+# $Revision: 4183 $
 ##################################################################
 
 profile-strictness = quiet
@@ -26,7 +26,7 @@ keywords = URL Date Author Revision
 allow_leading_tabs = 0
 
 [Modules::PerlMinimumVersion]
-version = 5.6.0
+version = 5.6.1
 
 [Documentation::PodSpelling]
 stop_words = autoflushes BBEdit CGI CPAN CVS Dolan encodings exponentials filename Guzis HEREDOC HEREDOCS HEREDOCs IDE Maxia Mehner Metadata metadata multi-line namespace namespaces PBP perlcritic perlcriticrc PolicyListing postfix programmatically PPI Readonly refactor refactoring runtime sigil sigils SQL STDERR STDIN STDOUT subdirectories TerMarsch Thalhammer TODO UI unblessed vice-versa

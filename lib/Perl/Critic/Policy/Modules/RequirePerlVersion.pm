@@ -1,13 +1,14 @@
 #######################################################################
-#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/lib/Perl/Critic/Policy/Modules/RequirePerlVersion.pm $
-#     $Date: 2008-05-26 16:44:53 -0500 (Mon, 26 May 2008) $
-#   $Author: clonezone $
-# $Revision: 2407 $
+#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/distributions/Perl-Critic-More/lib/Perl/Critic/Policy/Modules/RequirePerlVersion.pm $
+#     $Date: 2013-10-25 12:40:13 -0700 (Fri, 25 Oct 2013) $
+#   $Author: thaljef $
+# $Revision: 4180 $
 ########################################################################
 
 package Perl::Critic::Policy::Modules::RequirePerlVersion;
 
-use 5.006;
+use 5.006001;
+
 use strict;
 use warnings;
 
@@ -16,7 +17,7 @@ use Readonly;
 use Perl::Critic::Utils qw{ :severities };
 use base 'Perl::Critic::Policy';
 
-our $VERSION = '1.000';
+our $VERSION = '1.001';
 
 #---------------------------------------------------------------------------
 
@@ -38,7 +39,7 @@ sub violates {
     my $includes = $doc->find('PPI::Statement::Include');
     if ($includes) {
         for my $stmt ( @{$includes} ) {
-            next if $stmt->type ne 'use';
+            next   if $stmt->type ne 'use';
             return if $stmt->version;
             return if $stmt->module =~ m<
                 \A
@@ -74,8 +75,8 @@ Perl::Critic::Policy::Modules::RequirePerlVersion - Require a C<use 5.006;> or s
 
 =head1 AFFILIATION
 
-This policy is part of L<Perl::Critic::More>, a bleeding edge supplement to
-L<Perl::Critic>.
+This policy is part of L<Perl::Critic::More|Perl::Critic::More>, a bleeding
+edge supplement to L<Perl::Critic|Perl::Critic>.
 
 =head1 DESCRIPTION
 
@@ -88,7 +89,7 @@ For example, the C<our> keyword was first appeared in a stable Perl in version
 5.6.0.  Therefore, if your code employs C<our>, then you should have a line
 like this near the very top of your file:
 
-  use 5.006;
+    use 5.006;
 
 or
 

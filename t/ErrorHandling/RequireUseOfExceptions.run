@@ -46,8 +46,8 @@ open my $fh, '<', $path or
 #-----------------------------------------------------------------------------
 
 ##############################################################################
-#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/Perl-Critic-More/t/ErrorHandling/RequireUseOfExceptions.run $
-#     $Date: 2007-07-21 00:45:58 -0500 (Sat, 21 Jul 2007) $
+#      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/distributions/Perl-Critic-More/t/ErrorHandling/RequireUseOfExceptions.run $
+#     $Date: 2007-07-20 22:45:58 -0700 (Fri, 20 Jul 2007) $
 #   $Author: clonezone $
 # $Revision: 1774 $
 ##############################################################################

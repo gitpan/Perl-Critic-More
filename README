@@ -29,7 +29,9 @@ DESCRIPTION
     *   Peripheral to Perl
 
         For example, the "Editor::RequireEmacsFileVariables" policy is
-        metacode. These are not part of Perl::Critic's mission.
+        metacode. Also, the "Miscellanea::RequireRcsKeywords" policy
+        pertains to the development process, not the code itself. These are
+        not part of Perl::Critic's mission.
 
     *   Special purpose
 
