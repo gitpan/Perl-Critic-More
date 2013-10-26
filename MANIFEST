@@ -5,7 +5,6 @@ lib/Perl/Critic/More.pm
 lib/Perl/Critic/Policy/CodeLayout/RequireASCII.pm
 lib/Perl/Critic/Policy/Editor/RequireEmacsFileVariables.pm
 lib/Perl/Critic/Policy/ErrorHandling/RequireUseOfExceptions.pm
-lib/Perl/Critic/Policy/Miscellanea/RequireRcsKeywords.pm
 lib/Perl/Critic/Policy/Modules/PerlMinimumVersion.pm
 lib/Perl/Critic/Policy/Modules/RequirePerlVersion.pm
 lib/Perl/Critic/Policy/ValuesAndExpressions/RequireConstantOnLeftSideOfEquality.pm
@@ -25,7 +24,6 @@ t/20_policies_valuesandexpressions.t
 t/98_pod_syntax.t
 t/99_pod_coverage.t
 t/ErrorHandling/RequireUseOfExceptions.run
-t/Miscellanea/RequireRcsKeywords.run
 t/ValuesAndExpressions/RequireConstantOnLeftSideOfEquality.run
 TODO.pod
 xt/author/40_criticize.t

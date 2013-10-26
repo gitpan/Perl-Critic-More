@@ -1,8 +1,8 @@
 #######################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/distributions/Perl-Critic-More/lib/Perl/Critic/Policy/CodeLayout/RequireASCII.pm $
-#     $Date: 2013-10-25 12:21:21 -0700 (Fri, 25 Oct 2013) $
+#     $Date: 2013-10-25 15:09:33 -0700 (Fri, 25 Oct 2013) $
 #   $Author: thaljef $
-# $Revision: 4176 $
+# $Revision: 4194 $
 ########################################################################
 
 package Perl::Critic::Policy::CodeLayout::RequireASCII;
@@ -19,7 +19,7 @@ use List::MoreUtils qw(none any);
 use Perl::Critic::Utils qw{ :severities };
 use base 'Perl::Critic::Policy';
 
-our $VERSION = '1.001';
+our $VERSION = '1.002';
 
 Readonly::Scalar my $MAX_ASCII_VALUE => 127;
 
