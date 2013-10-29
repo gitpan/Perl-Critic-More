@@ -1,9 +1,16 @@
 ##############################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/distributions/Perl-Critic-More/Changes $
-#     $Date: 2013-10-25 17:08:59 -0700 (Fri, 25 Oct 2013) $
+#     $Date: 2013-10-29 09:37:40 -0700 (Tue, 29 Oct 2013) $
 #   $Author: thaljef $
-# $Revision: 4211 $
+# $Revision: 4221 $
 ##############################################################################
+
+[1.003] Released on 2013-10-29
+
+    - No code changes.
+
+    - Updated the postal address for FSF in the LICENSE.
+      This fixes RT #80380.  Thanks Petr Pisar.
 
 [1.002] Released on 2013-10-25
 

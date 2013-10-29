@@ -1,8 +1,8 @@
 #######################################################################
 #      $URL: http://perlcritic.tigris.org/svn/perlcritic/trunk/distributions/Perl-Critic-More/lib/Perl/Critic/Policy/Modules/PerlMinimumVersion.pm $
-#     $Date: 2013-10-25 15:09:33 -0700 (Fri, 25 Oct 2013) $
+#     $Date: 2013-10-29 09:39:11 -0700 (Tue, 29 Oct 2013) $
 #   $Author: thaljef $
-# $Revision: 4194 $
+# $Revision: 4222 $
 ########################################################################
 
 package Perl::Critic::Policy::Modules::PerlMinimumVersion;
@@ -19,7 +19,7 @@ use Perl::Critic::Utils qw{ :severities };
 
 use base 'Perl::Critic::Policy';
 
-our $VERSION = '1.002';
+our $VERSION = '1.003';
 
 #---------------------------------------------------------------------------
 
